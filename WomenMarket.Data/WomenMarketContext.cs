@@ -1,14 +1,18 @@
 namespace WomenMarket.Data
 {
-    using System.Data.Entity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
 
-    public class WomenMarketContext : DbContext
+    public class WomenMarketContext : IdentityDbContext<User>
     {
         public WomenMarketContext()
-            : base("WomenMarketContext")
+            : base("WomenMarketContext", throwIfV1Schema: false)
         {
         }
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public static WomenMarketContext Create()
+        {
+            return new WomenMarketContext();
+        }
     }
 }

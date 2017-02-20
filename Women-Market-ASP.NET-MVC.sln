@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WomenMarket.App", "WomenMar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WomenMarket.Data", "WomenMarket.Data\WomenMarket.Data.csproj", "{321444D9-5ED8-42A0-825B-F7053787DEFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WomenMarket.Models", "WomenMarket.Models\WomenMarket.Models.csproj", "{953FE36B-CF99-4806-AC16-867A7C820042}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{321444D9-5ED8-42A0-825B-F7053787DEFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{321444D9-5ED8-42A0-825B-F7053787DEFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{321444D9-5ED8-42A0-825B-F7053787DEFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953FE36B-CF99-4806-AC16-867A7C820042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953FE36B-CF99-4806-AC16-867A7C820042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953FE36B-CF99-4806-AC16-867A7C820042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953FE36B-CF99-4806-AC16-867A7C820042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
