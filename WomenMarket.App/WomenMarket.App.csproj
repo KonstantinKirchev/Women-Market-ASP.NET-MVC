@@ -281,6 +281,10 @@
       <Project>{321444d9-5ed8-42a0-825b-f7053787defc}</Project>
       <Name>WomenMarket.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WomenMarket.Models\WomenMarket.Models.csproj">
+      <Project>{953FE36B-CF99-4806-AC16-867A7C820042}</Project>
+      <Name>WomenMarket.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
