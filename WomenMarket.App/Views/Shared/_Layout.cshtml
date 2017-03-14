@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Women's Market</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,25 +17,79 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Women's Market", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @{
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Admin", "Index", "HomeAdmin", routeValues: new {area = "Admin"}, htmlAttributes: null)</li>
+                        }
+                    }
+                    <li>@Html.ActionLink("Stores", "All", "Stores")</li>
+
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Products <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation">@Html.ActionLink("All", "All", "Products")</li>
+                            <li role="presentation">@Html.ActionLink("Fruits", "Filtered", "Products")</li>
+                            <li role="presentation">@Html.ActionLink("Vegetables", "Filtered", "Products")</li>
+                            <li role="presentation">@Html.ActionLink("Diary", "Filtered", "Products")</li>
+                            <li role="presentation">@Html.ActionLink("Meats", "Filtered", "Products")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container-fluid">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <h3>Women's<span> Market</span></h3>
+            <p class="footer-links">
+                <a routerLink="">Home</a>
+                ·
+                <a routerLink="/stores">Stores</a>
+                ·
+                <a routerLink="/products/all">Products</a>
+                ·
+                <a routerLink="/profile">Profile</a>
+            </p>
+            <p class="footer-company-name">Women's Market &copy; 2017</p>
+        </div>
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>21 Solunska str.</span> Sofia, Bulgaria</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+359 889 780 321</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:konstantin1230@yahoo.com">konstantin1230@yahoo.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span>
+                One of the biggest markets in the country.
+            </p>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/konstantin.kirchev" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/konstantin1230" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/konstantinkirchev" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/KonstantinKirchev/" target="_blank"><i class="fa fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
