@@ -1,26 +1,24 @@
 ﻿using System.Web.Mvc;
+using WomenMarket.Data.UnitOfWork;
+using WomenMarket.Models;
 
 namespace WomenMarket.App.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public HomeController(IWomenMarketData data) : base(data)
+        {
+        }
+
+        public HomeController(IWomenMarketData data, User user) : base(data, user)
+        {
+        }
+
         public ActionResult Index()
         { 
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }
