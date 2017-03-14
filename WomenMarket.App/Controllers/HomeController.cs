@@ -6,11 +6,13 @@ namespace WomenMarket.App.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IWomenMarketData data) : base(data)
+        public HomeController(IWomenMarketData data) 
+            : base(data)
         {
         }
 
-        public HomeController(IWomenMarketData data, User user) : base(data, user)
+        public HomeController(IWomenMarketData data, User user) 
+            : base(data, user)
         {
         }
 

@@ -30,7 +30,9 @@ namespace WomenMarket.Models
         [Required]
         public string Address { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
 
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

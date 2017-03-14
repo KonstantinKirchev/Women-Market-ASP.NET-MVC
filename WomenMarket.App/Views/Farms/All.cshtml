@@ -1,0 +1,56 @@
+﻿@using WomenMarket.Models
+@model IEnumerable<Farm>
+
+@{
+    ViewBag.Title = "Farms";
+}
+
+<div class="container">
+    <div class="row" style="margin-bottom: 10vh;">
+        <div class="col-lg-12">
+            <h1 class="page-header">@ViewBag.Title</h1>
+        </div>
+        @foreach (var farm in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;">
+                <div class="hovereffect">
+                    <img class="img-responsive" src="@farm.ImageUrl" alt="Farm image" style="height: 30vh;">
+                </div>
+                <h4>@farm.Address</h4>
+                <h3><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal_@farm.Id">@farm.Name</a></h3>
+                @if (User.IsInRole("Admin"))
+                {
+                    <p>
+                        <a class="btn btn-primary" role="button" href="admin/farms/edit/@farm.Id">Edit</a> 
+                        <a class="btn btn-danger" role="button" href="admin/farms/delete/@farm.Id">Delete</a>
+                    </p>
+
+                }
+
+                <div class="modal fade" id="myModal_@farm.Id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">@farm.Name</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <p>@farm.Description</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-default" href="/products/farm/@farm.Name">Products</a>
+                                <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+      
+    </div>
+</div>
+
