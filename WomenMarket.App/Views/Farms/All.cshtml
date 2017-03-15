@@ -1,4 +1,5 @@
-﻿@using WomenMarket.Models
+﻿@using WomenMarket.App.Extensions
+@using WomenMarket.Models
 @model IEnumerable<Farm>
 
 @{
@@ -14,7 +15,8 @@
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;">
                 <div class="hovereffect">
-                    <img class="img-responsive" src="@farm.ImageUrl" alt="Farm image" style="height: 30vh;">
+                    @Html.Image(farm.ImageUrl, "Farm image", "height: 30vh;")
+                    @*<img class="img-responsive" src="@farm.ImageUrl" alt="Farm image" style="height: 30vh;">*@
                 </div>
                 <h4>@farm.Address</h4>
                 <h3><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal_@farm.Id">@farm.Name</a></h3>
