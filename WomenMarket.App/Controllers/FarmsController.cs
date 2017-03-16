@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
 
@@ -21,6 +22,7 @@ namespace WomenMarket.App.Controllers
 
         [HttpGet]
         [Route]
+        [OutputCache(Duration = 60, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult All()
         {
             IEnumerable<Farm> farms = Data.Farms.All().OrderBy(f => f.Id).ToList();
