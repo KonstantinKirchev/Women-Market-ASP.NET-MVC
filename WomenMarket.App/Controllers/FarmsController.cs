@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.UI;
+using WomenMarket.App.Services;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
 
@@ -10,13 +9,14 @@ namespace WomenMarket.App.Controllers
     [RoutePrefix("farms")]
     public class FarmsController : BaseController
     {
-        public FarmsController(IWomenMarketData data) 
-            : base(data)
+        private FarmsService service;
+
+        public FarmsController(IWomenMarketData data) : base(data)
         {
+            this.service = new FarmsService(data);
         }
 
-        public FarmsController(IWomenMarketData data, User user) 
-            : base(data, user)
+        public FarmsController(IWomenMarketData data, User user) : base(data, user)
         {
         }
 
@@ -25,7 +25,7 @@ namespace WomenMarket.App.Controllers
         [OutputCache(Duration = 60, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult All()
         {
-            IEnumerable<Farm> farms = Data.Farms.All().OrderBy(f => f.Id).ToList();
+            var farms = this.service.GetAllFarms();
             return View(farms);
         }
     }
