@@ -1,16 +1,70 @@
-﻿
+﻿@using WomenMarket.App.Models.ViewModels
+@model FarmViewModel
 @{
     ViewBag.Title = "Add new farm";
 }
 
 <div class="container">
+    @using (Html.BeginForm("Add", "Farms", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+    {
+        @Html.AntiForgeryToken()
+        <h2 class="form-signin-heading">@ViewBag.Title</h2>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-lg btn-primary" value="Add" />
+                <a class="btn btn-lg btn-danger" href="~/admin">Cancel</a>
+            </div>
+        </div>
+    }
+</div>
+
+@*<div class="container">
     <form class="form-signin" method="post">
+        @Html.AntiForgeryToken()
         <h2 class="form-signin-heading">@ViewBag.Title</h2>
         <label for="inputName" class="sr-only">Name</label>
         <input type="text" id="inputName" class="form-control" placeholder="Name" name="name" autofocus>
         <br>
         <label for="inputPicture" class="sr-only">Picture</label>
-        <input type="text" id="inputPicture" class="form-control" placeholder="Picture URL" name="picture" autofocus>
+        <input type="text" id="inputPicture" class="form-control" placeholder="Image URL" name="imageUrl" autofocus>
         <br>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" autofocus>
@@ -19,14 +73,14 @@
         <input type="text" id="inputAddress" class="form-control" placeholder="Address" name="address" autofocus>
         <br>
         <label for="inputPhone" class="sr-only">Phone</label>
-        <input type="text" id="inputPhone" class="form-control" placeholder="+359-XXX-XXX-XXX" name="phone" autofocus>
+        <input type="text" id="inputPhone" class="form-control" placeholder="+359-XXX-XXX-XXX" name="phoneNumber" autofocus>
         <br>
         <label for="inputDescription" class="sr-only">Description</label>
         <input type="text" id="inputDescription" class="form-control" placeholder="Description" name="description" autofocus>
         <br>
         <button type="submit" class="btn btn-lg btn-primary">Add</button>
-        <a class="btn btn-lg btn-alert" href="~/admin">Cancel</a>
+        <a class="btn btn-lg btn-danger" href="~/admin">Cancel</a>
         <br>
     </form>
-</div>
+</div>*@
 
