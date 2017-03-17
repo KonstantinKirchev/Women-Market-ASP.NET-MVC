@@ -5,9 +5,12 @@
     {
     @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Cart", "Index", "ShoppingCarts")
-            </li>
+            @if (!User.IsInRole("Admin"))
+            {
+                <li>
+                    @Html.ActionLink("Cart", "Index", "ShoppingCarts")
+                </li>
+            }
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
             </li>

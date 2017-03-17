@@ -27,6 +27,7 @@
             Mapper.Initialize(expression =>
             {
                 expression.CreateMap<Farm, FarmViewModel>();
+                expression.CreateMap<Product, ProductViewModel>();
             });
         }
     }
