@@ -38,12 +38,15 @@
                             </div>
                             <div class="modal-body">
                                 <div>
-                                    <p>@farm.Description</p>
+                                    <p><strong>Address:</strong> @farm.Address</p>
+                                    <p><strong>Email:</strong> @farm.Email</p>
+                                    <p><strong>Phone number:</strong> @farm.PhoneNumber</p>
+                                    <p><strong>Description:</strong> @farm.Description</p>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn btn-default" href="/products/farm/@farm.Name">Products</a>
-                                <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
+                                <a class="btn btn-success" href="/products/farm/@farm.Name">Products</a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

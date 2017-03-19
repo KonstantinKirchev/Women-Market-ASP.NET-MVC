@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using WomenMarket.App.Models.ViewModels;
-using WomenMarket.App.Services;
-using WomenMarket.Data.UnitOfWork;
-using WomenMarket.Models;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
+    using System.Web.Mvc;
+    using Services;
+    using Data.UnitOfWork;
+    using WomenMarket.Models;
+
     [RoutePrefix("products")]
     public class ProductsController : BaseController
     {
@@ -42,6 +40,14 @@ namespace WomenMarket.App.Controllers
         public ActionResult Search(string product)
         {
             var products = this.service.GetSearchedProducts(product);
+            return View(products);
+        }
+
+        [HttpGet]
+        [Route("farm/{farmName}")]
+        public ActionResult ByFarm(string farmName)
+        {
+            var products = this.service.GetProductsByFarm(farmName);
             return View(products);
         }
     }

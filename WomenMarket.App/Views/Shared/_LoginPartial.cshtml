@@ -8,7 +8,7 @@
             @if (!User.IsInRole("Admin"))
             {
                 <li>
-                    @Html.ActionLink("Cart", "Index", "ShoppingCarts")
+                    @Html.Raw(@Html.ActionLink("Cart", "Index", "ShoppingCarts", null, new { @class = "fa fa-shopping-cart" }).ToHtmlString().Replace("Cart", ""))
                 </li>
             }
             <li>

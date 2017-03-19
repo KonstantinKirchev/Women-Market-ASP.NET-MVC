@@ -16,6 +16,7 @@ namespace WomenMarket.App.Controllers
         {
         }
 
+        [HttpGet]
         public ActionResult Index()
         { 
             return View();

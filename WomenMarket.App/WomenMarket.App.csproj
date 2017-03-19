@@ -350,6 +350,7 @@
     <Content Include="Views\Farms\All.cshtml" />
     <Content Include="Views\Products\All.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
+    <Content Include="Views\Products\ByFarm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
