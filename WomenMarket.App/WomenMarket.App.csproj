@@ -245,7 +245,10 @@
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FarmsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Models\BindingModels\FarmBindingModel.cs" />
+    <Compile Include="Areas\Admin\Models\BindingModels\ProductBindingModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\ProductViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -292,6 +295,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Farms\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -354,7 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\ViewModels\" />
     <Folder Include="Models\BindingModels\" />
   </ItemGroup>
   <ItemGroup>

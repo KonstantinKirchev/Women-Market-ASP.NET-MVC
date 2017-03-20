@@ -56,9 +56,9 @@ namespace WomenMarket.App
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "148371082352751",
+               appSecret: "4a8e27106fe3b9aedf80a3d43cefa973");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
