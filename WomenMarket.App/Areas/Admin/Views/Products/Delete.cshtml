@@ -1,0 +1,59 @@
+﻿@using WomenMarket.App.Areas.Admin.Models.ViewModels
+@model ProductViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this product?</h3>
+    <div>
+        <hr />
+        @using (Html.BeginForm("Delete", "Products", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+     
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Description, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Price, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Quantity, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Quantity, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.ImageUrl, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" value="Delete" />
+                    @Html.ActionLink("Cancel", "All", "Products", routeValues: new { area = ""}, htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+    
+

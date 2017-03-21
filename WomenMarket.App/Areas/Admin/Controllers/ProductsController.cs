@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using WomenMarket.App.Areas.Admin.Models.ViewModels;
+﻿using System.Net;
 
 namespace WomenMarket.App.Areas.Admin.Controllers
 {
@@ -9,6 +8,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
     using WomenMarket.Models;
     using System.Collections.Generic;
     using System.Linq;
+    using Models.ViewModels;
 
     public class ProductsController : BaseAdminController
     {
@@ -155,6 +155,47 @@ namespace WomenMarket.App.Areas.Admin.Controllers
                 
                 this.Data.SaveChanges();
             }
+
+            return RedirectToAction("All", "Products", routeValues: new { area = "" });
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Product product = this.Data.Products.Find(id);
+
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            ProductViewModel viewModel = new ProductViewModel()
+            {
+                Id = product.Id,
+                Categories = GetCategoriesById(product.CategoryId),
+                Farms = GetFarmsById(product.OwnerId),
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Product product = this.Data.Products.Find(id);
+            this.Data.Products.Remove(product);
+            this.Data.SaveChanges();
 
             return RedirectToAction("All", "Products", routeValues: new { area = "" });
         }
