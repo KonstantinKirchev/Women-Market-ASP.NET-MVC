@@ -38,8 +38,8 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <p>
-                                    <a class="btn btn-primary" role="button">Edit</a>
-                                    <a class="btn btn-danger" role="button">Delete</a>
+                                    @Html.ActionLink("Edit", "Edit", "Products", routeValues: new { area = "Admin", id = product.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "Delete", "Products", routeValues: new { area = "Admin", id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" })
                                 </p>
                             }
                         </div>
