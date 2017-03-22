@@ -22,7 +22,7 @@ namespace WomenMarket.App.Controllers
 
         [HttpGet]
         [Route]
-        [OutputCache(Duration = 60, Location = OutputCacheLocation.ServerAndClient)]
+        //[OutputCache(Duration = 60, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult All()
         {
             var farms = this.service.GetAllFarms();

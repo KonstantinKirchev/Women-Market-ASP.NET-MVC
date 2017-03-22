@@ -4,6 +4,8 @@ namespace WomenMarket.App.Areas.Admin.Models.BindingModels
 {
     public class FarmBindingModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
