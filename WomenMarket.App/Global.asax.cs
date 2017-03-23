@@ -28,6 +28,7 @@
             {
                 expression.CreateMap<Farm, FarmViewModel>();
                 expression.CreateMap<Product, ProductViewModel>();
+                expression.CreateMap<ShoppingCart, ShoppingCartViewModel>();
             });
         }
     }

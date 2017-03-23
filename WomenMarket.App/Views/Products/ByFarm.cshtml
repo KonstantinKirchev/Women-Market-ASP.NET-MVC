@@ -32,7 +32,7 @@
                             @if (Request.IsAuthenticated && !User.IsInRole("Admin"))
                             {
                                 <p>
-                                    <a class="btn btn-primary" role="button">Add to cart</a>
+                                    @Html.ActionLink("Add to cart", "AddProduct", "ShoppingCart", routeValues: new { area = "", id = product.Id }, htmlAttributes: new { @class = "btn btn-primary" })
                                 </p>
                             }
                             @if (User.IsInRole("Admin"))

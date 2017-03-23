@@ -1,10 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WomenMarket.Models
 {
     public class Product
     {
+        public Product()
+        {
+            this.ShoppingCarts = new HashSet<ShoppingCart>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -35,6 +41,8 @@ namespace WomenMarket.Models
 
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
+
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
     }
 }

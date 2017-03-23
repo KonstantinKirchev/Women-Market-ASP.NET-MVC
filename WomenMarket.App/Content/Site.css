@@ -193,3 +193,7 @@ textarea {
     padding: 0;
 }
 
+#myCart > table > tbody > tr > td {
+    vertical-align: middle;
+}
+
