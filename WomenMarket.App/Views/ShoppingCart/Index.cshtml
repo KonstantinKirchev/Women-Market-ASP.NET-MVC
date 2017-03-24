@@ -25,25 +25,42 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var product in Model.Products)
-                    {
-                        <tr>
-                            <td>@product.Name</td>
-                            <td><button (click)="decrease(@product.Id)">-</button> @product.Unites <button (click)="increase(@product.Id)">+</button></td>
-                            <td>@product.Price</td>
-                            <td>@Html.ActionLink("Remove", "RemoveProduct", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" })</td>
-                        </tr>
-                    }
+                @{
+                    decimal total = 0.00m;
+                }
+                @foreach (var product in Model.Products)
+                {
+                    total += (product.Price * product.Unites);
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@Html.ActionLink("-", "DecreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" }) <span id="units">@product.Unites</span> @Html.ActionLink("+", "IncreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-success" })</td>
+                        <td>@(product.Price * product.Unites)</td>
+                        <td>@Html.ActionLink("Remove", "RemoveProduct", "ShoppingCart", routeValues: new {area = "", cartId = Model.Id, id = product.Id}, htmlAttributes: new {@class = "btn btn-danger"})</td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
-        <h2>Total: @Model.TotalPrice lv.</h2>
-        @using(@Html.BeginForm()){
-            @Html.HiddenFor(m => m.Id)
-            <button class="btn btn-success">Order now</button>
-        }
+        <h2>Total: @total lv.</h2>
+        @Html.ActionLink("Order now", "PlaceOrder", "ShoppingCart", routeValues: new { area = "", id = Model.Id, totalAmount = total }, htmlAttributes: new { @class = "btn btn-success" })
         <br>
         <br>
     </div>
+}
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        var totalPrice = $("#totalPrice").text();
+        console.log(totalPrice);
+        var units = $("#units").text();
+        console.log(units);
+
+        function decrease() {
+            
+        }
+    </script>
+
 }
 

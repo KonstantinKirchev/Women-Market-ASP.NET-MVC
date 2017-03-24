@@ -9,7 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WomenMarket.App.Models;
+using WomenMarket.Data;
 using WomenMarket.Models;
+using WomenMarket.Models.Enums;
 
 namespace WomenMarket.App.Controllers
 {
@@ -18,6 +20,7 @@ namespace WomenMarket.App.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        WomenMarketContext context = new WomenMarketContext();
 
         public AccountController()
         {
@@ -392,6 +395,20 @@ namespace WomenMarket.App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            var username = User.Identity.Name;
+            User user = this.context.Users.FirstOrDefault(u => u.UserName == username);
+
+            var shoppingCart = this.context.ShoppingCarts.FirstOrDefault(s => s.UserId == user.Id && (s.Status == OrderStatus.Open || s.Status == OrderStatus.Pending));
+
+            if (shoppingCart != null)
+            {
+                foreach (var product in shoppingCart.Products)
+                {
+                    product.Unites = 1;
+                    context.SaveChanges();
+                }
+            }
+            
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

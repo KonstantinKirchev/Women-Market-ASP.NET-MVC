@@ -1,8 +1,9 @@
-﻿namespace WomenMarket.App.Services
+﻿using System;
+
+namespace WomenMarket.App.Services
 {
     using Data.UnitOfWork;
     using WomenMarket.Models;
-    using System;
     using System.Linq;
     using AutoMapper;
     using Models.ViewModels;
@@ -82,7 +83,41 @@
 
         public void RemoveFromShoppingCart(ShoppingCart cart, Product product)
         {
+            product.Unites = 1;
             cart.Products.Remove(product);
+            this.Data.SaveChanges();
+        }
+
+        public void DecreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
+        {
+            product.Unites -= 1;
+
+            if (product.Unites == 0)
+            {
+                cart.Products.Remove(product);
+                product.Unites = 1;
+            }
+
+            this.Data.SaveChanges();
+        }
+
+        public void IncreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
+        {
+            product.Unites += 1;
+            this.Data.SaveChanges();
+        }
+
+        public void MakeAnOrder(int id, decimal totalAmount)
+        {
+            ShoppingCart cart = this.Data.ShoppingCarts.Find(id);
+            cart.Status = OrderStatus.Pending;
+            cart.TotalPrice = totalAmount;
+            cart.DateOfOrder = DateTime.Now;
+            var products = this.Data.Products.All().ToList();
+            foreach (var product in products)
+            {
+                product.Unites = 1;
+            }
             this.Data.SaveChanges();
         }
     }
