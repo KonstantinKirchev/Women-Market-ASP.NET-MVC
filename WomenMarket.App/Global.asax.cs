@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App
+﻿using WomenMarket.App.Areas.Admin.Models.ViewModels;
+
+namespace WomenMarket.App
 {
     using System.Data.Entity;
     using System.Web.Mvc;
@@ -29,6 +31,7 @@
                 expression.CreateMap<Farm, FarmViewModel>();
                 expression.CreateMap<Product, ProductViewModel>();
                 expression.CreateMap<ShoppingCart, ShoppingCartViewModel>();
+                expression.CreateMap<ShoppingCart, OrderViewModel>();
             });
         }
     }

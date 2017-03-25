@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Models.BindingModels;
@@ -9,6 +7,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using Models.ViewModels;
+    using System.Net;
 
     public class ProductsController : BaseAdminController
     {

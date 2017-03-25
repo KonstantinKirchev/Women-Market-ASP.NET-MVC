@@ -193,7 +193,9 @@ textarea {
     padding: 0;
 }
 
-#myCart > table > tbody > tr > td {
+#myCart > table > tbody > tr > td,
+#orders > table > tbody > tr > td {
     vertical-align: middle;
 }
+
 
