@@ -1,0 +1,30 @@
+﻿@using WomenMarket.App.Models.ViewModels
+@model IEnumerable<ProductViewModel>
+
+<div class="container">
+    <h1>Products in the order</h1>
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Units</td>
+                <td>@product.Price lv.</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <br>
+    @Html.ActionLink("Back to orders", "Index", "Orders", routeValues: new {area = "Admin"}, htmlAttributes: new {@class = "btn btn-danger"})
+</div>
+
+
+

@@ -306,6 +306,8 @@
     <Content Include="Areas\Admin\Views\Farms\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Farms\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\OrdersByStatusPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Products.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

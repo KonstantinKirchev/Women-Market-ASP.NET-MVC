@@ -9,6 +9,7 @@ namespace WomenMarket.Models
         public Product()
         {
             this.ShoppingCarts = new HashSet<ShoppingCart>();
+            this.Units = 1;
         }
 
         [Key]
@@ -27,7 +28,7 @@ namespace WomenMarket.Models
         [Required]
         public string Quantity { get; set; }
 
-        public int Unites { get; set; }
+        public int Units { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }

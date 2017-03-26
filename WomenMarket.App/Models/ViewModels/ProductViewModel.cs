@@ -12,6 +12,8 @@
 
         public string Quantity { get; set; }
 
+        public int Units { get; set; }
+
         public string ImageUrl { get; set; }
     }
 }

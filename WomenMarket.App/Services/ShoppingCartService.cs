@@ -83,19 +83,19 @@ namespace WomenMarket.App.Services
 
         public void RemoveFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Unites = 1;
+            product.Units = 1;
             cart.Products.Remove(product);
             this.Data.SaveChanges();
         }
 
         public void DecreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Unites -= 1;
+            product.Units -= 1;
 
-            if (product.Unites == 0)
+            if (product.Units == 0)
             {
                 cart.Products.Remove(product);
-                product.Unites = 1;
+                product.Units = 1;
             }
 
             this.Data.SaveChanges();
@@ -103,7 +103,7 @@ namespace WomenMarket.App.Services
 
         public void IncreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Unites += 1;
+            product.Units += 1;
             this.Data.SaveChanges();
         }
 
@@ -116,7 +116,7 @@ namespace WomenMarket.App.Services
             var products = this.Data.Products.All().ToList();
             foreach (var product in products)
             {
-                product.Unites = 1;
+                product.Units = 1;
             }
             this.Data.SaveChanges();
         }

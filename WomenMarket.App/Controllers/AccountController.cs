@@ -404,7 +404,7 @@ namespace WomenMarket.App.Controllers
             {
                 foreach (var product in shoppingCart.Products)
                 {
-                    product.Unites = 1;
+                    product.Units = 1;
                     context.SaveChanges();
                 }
             }

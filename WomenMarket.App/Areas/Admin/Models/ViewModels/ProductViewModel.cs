@@ -17,6 +17,8 @@ namespace WomenMarket.App.Areas.Admin.Models.ViewModels
 
         public string Quantity { get; set; }
 
+        public int Units { get; set; }
+
         public string ImageUrl { get; set; }
 
         [Display(Name = "Category")]
