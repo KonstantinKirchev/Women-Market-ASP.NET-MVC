@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WomenMarket.App.Models;
+using WomenMarket.App.Models.ViewModels;
 
 namespace WomenMarket.App.Controllers
 {

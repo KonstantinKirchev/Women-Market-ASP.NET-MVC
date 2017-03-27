@@ -19,6 +19,8 @@ namespace WomenMarket.Models
 
         public string Address { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

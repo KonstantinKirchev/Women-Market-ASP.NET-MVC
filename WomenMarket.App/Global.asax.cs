@@ -32,6 +32,8 @@ namespace WomenMarket.App
                 expression.CreateMap<Product, ProductViewModel>();
                 expression.CreateMap<ShoppingCart, ShoppingCartViewModel>();
                 expression.CreateMap<ShoppingCart, OrderViewModel>();
+                expression.CreateMap<ShoppingCart, MyOrderViewModel>();
+                expression.CreateMap<User, UserViewModel>();
             });
         }
     }

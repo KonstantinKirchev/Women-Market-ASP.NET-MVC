@@ -30,11 +30,11 @@ else
                 }
                 @foreach (var product in Model.Products)
                 {
-                    total += (product.Price * product.Unites);
+                    total += (product.Price * product.Units);
                     <tr>
                         <td>@product.Name</td>
-                        <td>@Html.ActionLink("-", "DecreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" }) <span id="units">@product.Unites</span> @Html.ActionLink("+", "IncreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-success" })</td>
-                        <td>@(product.Price * product.Unites)</td>
+                        <td>@Html.ActionLink("-", "DecreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" }) <span id="units">@product.Units</span> @Html.ActionLink("+", "IncreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-success" })</td>
+                        <td>@(product.Price * product.Units)</td>
                         <td>@Html.ActionLink("Remove", "RemoveProduct", "ShoppingCart", routeValues: new {area = "", cartId = Model.Id, id = product.Id}, htmlAttributes: new {@class = "btn btn-danger"})</td>
                     </tr>
                 }
