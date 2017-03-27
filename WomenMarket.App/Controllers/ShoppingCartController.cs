@@ -92,6 +92,13 @@ namespace WomenMarket.App.Controllers
         [Route("placeorder/{id}")]
         public ActionResult PlaceOrder(int id, decimal totalAmount)
         {
+            string username = this.User.Identity.Name;
+
+            if (!service.IsProfileComplete(username))
+            {
+                return this.RedirectToAction("Edit","Profile");
+            }
+
             service.MakeAnOrder(id, totalAmount);
 
             return this.RedirectToAction("Index", "Home");

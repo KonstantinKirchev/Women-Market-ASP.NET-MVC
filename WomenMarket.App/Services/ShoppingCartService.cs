@@ -120,5 +120,17 @@ namespace WomenMarket.App.Services
             }
             this.Data.SaveChanges();
         }
+
+        public bool IsProfileComplete(string username)
+        {
+            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
+
+            if (user.Name == null || user.Address == null || user.PhoneNumber == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

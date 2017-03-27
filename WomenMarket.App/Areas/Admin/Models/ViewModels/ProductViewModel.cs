@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-using WomenMarket.Models;
-
-namespace WomenMarket.App.Areas.Admin.Models.ViewModels
+﻿namespace WomenMarket.App.Areas.Admin.Models.ViewModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class ProductViewModel
     {
         public int Id { get; set; }
