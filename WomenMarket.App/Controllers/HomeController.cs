@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
-using WomenMarket.Data.UnitOfWork;
-using WomenMarket.Models;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
+    using System.Web.Mvc;
+    using Data.UnitOfWork;
+    using WomenMarket.Models;
+
     public class HomeController : BaseController
     {
         public HomeController(IWomenMarketData data) 

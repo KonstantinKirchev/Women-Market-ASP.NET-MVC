@@ -1,6 +1,6 @@
 ﻿@using WomenMarket.App.Models.ViewModels
-@using WomenMarket.Models.Enums
-@model IEnumerable<MyOrderViewModel>
+@model PagedList.IPagedList<MyOrderViewModel>
+
 @{
     ViewBag.Title = "My orders";
 }
@@ -31,7 +31,6 @@
                     Html.RenderPartial("OrdersByStatusPartial", Model);
                 }
             </div>
-            <div id="customerInfo"></div>
         </div>
                     }
 </section>

@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using WomenMarket.Models.Enums;
+﻿using WomenMarket.App.Services;
 
 namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
-    using System.Linq;
-    using AutoMapper;
     using Models.BindingModels;
     using Models.ViewModels;
     using Data.UnitOfWork;
     using WomenMarket.Models;
+    using System.Collections.Generic;
+    using PagedList;
 
     public class ProfileController : BaseController
     {
+        private ProfileService service;
+
         public ProfileController(IWomenMarketData data) 
             : base(data)
         {
+            this.service = new ProfileService(data);
         }
 
         public ProfileController(IWomenMarketData data, User user) 
@@ -28,8 +29,9 @@ namespace WomenMarket.App.Controllers
         public ActionResult Index()
         {
             var username = User.Identity.Name;
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-            UserViewModel viewModel = Mapper.Instance.Map<User, UserViewModel>(user);
+
+            UserViewModel viewModel = service.GetProfile(username);
+
             return View(viewModel);
         }
 
@@ -37,9 +39,10 @@ namespace WomenMarket.App.Controllers
         public ActionResult Edit()
         {
             var username = User.Identity.Name;
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-            UserViewModel viewModels = Mapper.Instance.Map<User, UserViewModel>(user);
-            return View(viewModels);
+
+            UserViewModel viewModel = service.GetProfile(username);
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -49,56 +52,38 @@ namespace WomenMarket.App.Controllers
             if (ModelState.IsValid)
             {
                 var username = User.Identity.Name;
-                User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
 
-                user.Name = model.Name;
-                user.Email = model.Email;
-                user.ImageUrl = model.ImageUrl;
-                user.Address = model.Address;
-                user.PhoneNumber = model.PhoneNumber;
-
-                this.Data.SaveChanges();
+                service.EditUser(username, model);
+                
             }
 
             return RedirectToAction("Index", "Profile", routeValues: new { area = "" });
         }
 
         [HttpGet]
-        public ActionResult MyOrders()
+        public ActionResult MyOrders(int? page)
         {
             var username = User.Identity.Name;
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
 
-            IEnumerable<ShoppingCart> shoppingcarts =
-                this.Data.ShoppingCarts.All()
-                    .Where(s => s.UserId == user.Id).ToList();
+            IEnumerable<MyOrderViewModel> viewModels = service.GetMyOrders(username);
 
-            IEnumerable<MyOrderViewModel> viewModels = Mapper.Instance.Map<IEnumerable<ShoppingCart>, IEnumerable<MyOrderViewModel>>(shoppingcarts);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
 
-            return View(viewModels);
+            return View(viewModels.ToPagedList(pageNumber, pageSize));
         }
 
-        public PartialViewResult OrdersByStatusPartial(string status)
+        public PartialViewResult OrdersByStatusPartial(string status, int? page)
         {
             var username = User.Identity.Name;
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
+            
 
-            IEnumerable<ShoppingCart> orders;
+            IEnumerable<MyOrderViewModel> viewModels = service.GetOrdersByStatus(username, status);
 
-            if (status == "All")
-            {
-                orders = this.Data.ShoppingCarts.All().Where(s => s.UserId == user.Id).ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
 
-            }
-            else
-            {
-                OrderStatus currentStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), status);
-                orders = this.Data.ShoppingCarts.All().Where(s => s.UserId == user.Id && s.Status == currentStatus).ToList();
-            }
-
-            IEnumerable<MyOrderViewModel> viewModels = Mapper.Instance.Map<IEnumerable<ShoppingCart>, IEnumerable<MyOrderViewModel>>(orders);
-
-            return PartialView(viewModels);
+            return PartialView(viewModels.ToPagedList(pageNumber, pageSize));
         }
     }
 }

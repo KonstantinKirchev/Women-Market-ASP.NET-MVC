@@ -1,5 +1,9 @@
 ﻿namespace WomenMarket.App.Models.ViewModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class ProductViewModel
     {
         public int Id { get; set; }
@@ -15,5 +19,15 @@
         public int Units { get; set; }
 
         public string ImageUrl { get; set; }
+
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
+
+        [Display(Name = "Farm")]
+        public int FarmId { get; set; }
+
+        public IEnumerable<SelectListItem> Farms { get; set; }
     }
 }
