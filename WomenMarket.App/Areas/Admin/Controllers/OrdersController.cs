@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Areas.Admin.Controllers
+﻿using WomenMarket.App.Models.ViewModels;
+
+namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
@@ -51,7 +53,7 @@
         [HttpGet]
         public ActionResult Client(int id)
         {
-            User user = service.GetOrderOwner(id);
+            UserViewModel user = service.GetOrderOwner(id);
 
             return View(user);
         }

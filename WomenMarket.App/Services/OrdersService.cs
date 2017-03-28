@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Services
+﻿using WomenMarket.App.Models.ViewModels;
+
+namespace WomenMarket.App.Services
 {
     using Data.UnitOfWork;
     using WomenMarket.Models;
@@ -65,12 +67,13 @@
             return viewModels;
         }
 
-        public User GetOrderOwner(int id)
+        public UserViewModel GetOrderOwner(int id)
         {
             var userId = this.Data.ShoppingCarts.Find(id).UserId;
             User user = this.Data.Users.Find(userId);
+            UserViewModel viewModel = Mapper.Instance.Map<User, UserViewModel>(user);
 
-            return user;
+            return viewModel;
         }
     }
 }

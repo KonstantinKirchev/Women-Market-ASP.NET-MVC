@@ -322,6 +322,7 @@
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\OrdersByStatusPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Products.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Client.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
