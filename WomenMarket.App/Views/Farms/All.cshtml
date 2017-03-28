@@ -1,6 +1,6 @@
 ﻿@using WomenMarket.App.Extensions
-@using WomenMarket.App.Models.ViewModels
-@model IEnumerable<WomenMarket.Models.ViewModels.FarmViewModel>
+@using WomenMarket.Models.ViewModels
+@model IEnumerable<FarmViewModel>
 
 @{
     ViewBag.Title = "Farms";
@@ -12,7 +12,7 @@
             <h1 class="page-header">@ViewBag.Title</h1>
         </div>
         @foreach (var farm in Model)
-        {
+            {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding: 10px;">
                 <div class="hovereffect">
                     @Html.Image(farm.ImageUrl, "Farm image", "height: 30vh;")
@@ -22,8 +22,8 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <p>
-                        <a class="btn btn-primary" role="button" href="admin/farms/edit/@farm.Id">Edit</a> 
-                        <a class="btn btn-danger" role="button" href="admin/farms/delete/@farm.Id">Delete</a>
+                        @Html.ActionLink("Edit", "Edit", "Farms", routeValues: new { area = "Admin", id = farm.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Farms", routeValues: new { area = "Admin", id = farm.Id }, htmlAttributes: new { @class = "btn btn-danger" })
                     </p>
                 }
 
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn btn-success" href="/products/farm/@farm.Name">Products</a>
+                                @Html.ActionLink("Products", "ByFarm", "Products", routeValues: new { area = "", farmName = farm.Name }, htmlAttributes: new { @class = "btn btn-success" })
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -53,7 +53,5 @@
                 </div>
             </div>
         }
-      
     </div>
 </div>
-

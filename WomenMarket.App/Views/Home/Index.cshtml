@@ -1,4 +1,5 @@
-﻿@{
+﻿@using WomenMarket.App.Extensions
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -14,34 +15,34 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="http://www.mrwallpaper.com/wallpapers/fresh-fruits-1920x1080.jpg" alt="First slide">
+            @Html.Image("http://www.mrwallpaper.com/wallpapers/fresh-fruits-1920x1080.jpg", "First slide")
             <div class="carousel-caption">
                 <h3>Assorted fruits</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <p>The best fruits in town.</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="https://images2.alphacoders.com/216/216360.jpg" alt="First slide">
+            @Html.Image("https://images2.alphacoders.com/216/216360.jpg", "Second slide")
             <div class="carousel-caption">
                 <h3>Assorted vegetables</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <p>Try our delicious vegetables.</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="https://wallpaperscraft.com/image/cheese_different_delicious_dairy_70737_1920x1080.jpg" alt="Third slide">
+            @Html.Image("https://wallpaperscraft.com/image/cheese_different_delicious_dairy_70737_1920x1080.jpg", "Third slide")
             <div class="carousel-caption">
                 <h3>Assorted dairy</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <p>Our dairies are from a certified dairy producers.</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="https://wallpaperscraft.com/image/meat_sausage_sliced_assorted_varieties_20940_1920x1080.jpg" alt="Third slide" width="100%">
+            @Html.Image("https://wallpaperscraft.com/image/meat_sausage_sliced_assorted_varieties_20940_1920x1080.jpg", "Forth slide")
             <div class="carousel-caption">
                 <h3>Assorted meats</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <p>The best steaks in town. Try it for yourself.</p>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
-﻿@using WomenMarket.App.Models.ViewModels
-@model WomenMarket.Models.ViewModels.UserViewModel
+﻿@using WomenMarket.App.Extensions
+@using WomenMarket.Models.ViewModels
+@model UserViewModel
 @{
     ViewBag.Title = "Edit profile";
 }
@@ -15,36 +16,36 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.Name, new { @class = "form-control" })
+                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.ImageUrl, new { @class = "form-control" })
+                @Html.EditorFor(m => m.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.Email, new { @class = "form-control" })
+                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.Address, new { @class = "form-control" })
+                @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-control" })
+                @Html.EditorFor(m => m.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-primary" value="Edit" />
+                @Html.Submit("Edit")
                 @Html.ActionLink("Cancel", "Index", "Profile", new { area = "" }, new { @class = "btn btn-danger" })
             </div>
         </div>

@@ -1,5 +1,6 @@
-﻿@using WomenMarket.App.Models.ViewModels
-@model WomenMarket.Models.ViewModels.FarmViewModel
+﻿@using WomenMarket.App.Extensions
+@using WomenMarket.Models.ViewModels
+@model FarmViewModel
 @{
     ViewBag.Title = "Add new farm";
 }
@@ -49,38 +50,10 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-primary" value="Add" />
+                @Html.Submit("Add")
                 @Html.ActionLink("Cancel", "Index", "HomeAdmin", routeValues: new { area = "Admin" }, htmlAttributes: new { @class = "btn btn-danger" })
             </div>
         </div>
     }
 </div>
-
-@*<div class="container">
-    <form class="form-signin" method="post">
-        @Html.AntiForgeryToken()
-        <h2 class="form-signin-heading">@ViewBag.Title</h2>
-        <label for="inputName" class="sr-only">Name</label>
-        <input type="text" id="inputName" class="form-control" placeholder="Name" name="name" autofocus>
-        <br>
-        <label for="inputPicture" class="sr-only">Picture</label>
-        <input type="text" id="inputPicture" class="form-control" placeholder="Image URL" name="imageUrl" autofocus>
-        <br>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" autofocus>
-        <br>
-        <label for="inputAddress" class="sr-only">Address</label>
-        <input type="text" id="inputAddress" class="form-control" placeholder="Address" name="address" autofocus>
-        <br>
-        <label for="inputPhone" class="sr-only">Phone</label>
-        <input type="text" id="inputPhone" class="form-control" placeholder="+359-XXX-XXX-XXX" name="phoneNumber" autofocus>
-        <br>
-        <label for="inputDescription" class="sr-only">Description</label>
-        <input type="text" id="inputDescription" class="form-control" placeholder="Description" name="description" autofocus>
-        <br>
-        <button type="submit" class="btn btn-lg btn-primary">Add</button>
-        <a class="btn btn-lg btn-danger" href="~/admin">Cancel</a>
-        <br>
-    </form>
-</div>*@
 

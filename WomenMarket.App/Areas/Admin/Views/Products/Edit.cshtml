@@ -1,5 +1,6 @@
-﻿@using WomenMarket.App.Models.ViewModels
-@model WomenMarket.Models.ViewModels.ProductViewModel
+﻿@using WomenMarket.App.Extensions
+@using WomenMarket.Models.ViewModels
+@model ProductViewModel
 @{
     ViewBag.Title = "Edit product";
 }
@@ -56,7 +57,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-primary" value="Edit" />
+                @Html.Submit("Edit")
                 @Html.ActionLink("Cancel", "All", "Products", routeValues: new { area = "" }, htmlAttributes: new { @class = "btn btn-danger" })
             </div>
         </div>

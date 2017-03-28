@@ -1,7 +1,7 @@
-﻿@using WomenMarket.App.Models.ViewModels
-@model WomenMarket.Models.ViewModels.ShoppingCartViewModel
+﻿@using WomenMarket.Models.ViewModels
+@model ShoppingCartViewModel
 @{
-    ViewBag.Title = "Shopping Cart";
+    ViewBag.Title = "My shopping cart";
 }
 
 @if (Model == null || Model.Products.Count == 0)
@@ -13,7 +13,7 @@
 else
 {
     <div class="container">
-        <h1>My @ViewBag.Title</h1>
+        <h1>@ViewBag.Title</h1>
         <div class="cart" id="myCart">
             <table class="table table-striped table-hover ">
                 <thead>

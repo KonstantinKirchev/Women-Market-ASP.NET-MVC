@@ -60,7 +60,14 @@
                 ·
                 @Html.ActionLink("Products", "All", "Products")
                 ·
-                @Html.ActionLink("Shopping cart", "Index", "ShoppingCart")
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Admin", "Index", "HomeAdmin", routeValues: new { area = "Admin" }, htmlAttributes: null)
+                }
+                else
+                {
+                    @Html.ActionLink("Shopping cart", "Index", "ShoppingCart")
+                }
             </p>
             <p class="footer-company-name">Women's Market &copy; 2017</p>
         </div>

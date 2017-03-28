@@ -12,6 +12,24 @@ namespace WomenMarket.App.Extensions
             return new MvcHtmlString(builder.ToString(TagRenderMode.Normal));
         }
 
+        public static MvcHtmlString Image(this HtmlHelper helper, string imgUrl, string alt)
+        {
+            TagBuilder builder = new TagBuilder("img");
+            builder.AddCssClass("img-responsive");
+            builder.MergeAttribute("src", imgUrl);
+            builder.MergeAttribute("alt", alt);
+            return new MvcHtmlString(builder.ToString(TagRenderMode.SelfClosing));
+        }
+
+        public static MvcHtmlString CustomImage(this HtmlHelper helper, string imgUrl, string alt, string customClass)
+        {
+            TagBuilder builder = new TagBuilder("img");
+            builder.AddCssClass(customClass);
+            builder.MergeAttribute("src", imgUrl);
+            builder.MergeAttribute("alt", alt);
+            return new MvcHtmlString(builder.ToString(TagRenderMode.SelfClosing));
+        }
+
         public static MvcHtmlString Image(this HtmlHelper helper, string imgUrl, string alt, string style)
         {
             TagBuilder builder = new TagBuilder("img");
@@ -19,6 +37,15 @@ namespace WomenMarket.App.Extensions
             builder.MergeAttribute("src", imgUrl);
             builder.MergeAttribute("alt", alt);
             builder.MergeAttribute("style", style);
+            return new MvcHtmlString(builder.ToString(TagRenderMode.SelfClosing));
+        }
+
+        public static MvcHtmlString Submit(this HtmlHelper helper, string value)
+        {
+            TagBuilder builder = new TagBuilder("input");
+            builder.AddCssClass("btn btn-primary");
+            builder.MergeAttribute("type", "submit");
+            builder.MergeAttribute("value", value);
             return new MvcHtmlString(builder.ToString(TagRenderMode.SelfClosing));
         }
 
