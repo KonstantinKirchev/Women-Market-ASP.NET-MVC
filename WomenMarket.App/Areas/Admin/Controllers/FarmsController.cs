@@ -1,15 +1,12 @@
-﻿using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
     using System.Net;
-    using App.Models.ViewModels;
     using Services;
+    using WomenMarket.Models.BindingModels;
+    using WomenMarket.Models.EntityModels;
+    using WomenMarket.Models.ViewModels;
 
     public class FarmsController : BaseAdminController
     {

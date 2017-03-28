@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using WomenMarket.App.Models.ViewModels;
-using WomenMarket.App.Services;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.Enums;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
+    using System.Collections.Generic;
+    using WomenMarket.Models.EntityModels;
+    using WomenMarket.Models.ViewModels;
+    using Services;
 
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : BaseController

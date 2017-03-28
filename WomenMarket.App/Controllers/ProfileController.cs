@@ -1,16 +1,13 @@
-﻿using WomenMarket.App.Services;
-using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
-    using Models.ViewModels;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
     using System.Collections.Generic;
     using PagedList;
+    using WomenMarket.Models.BindingModels;
+    using WomenMarket.Models.EntityModels;
+    using WomenMarket.Models.ViewModels;
+    using Services;
 
     public class ProfileController : BaseController
     {

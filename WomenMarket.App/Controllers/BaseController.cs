@@ -1,13 +1,11 @@
-﻿using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System;
     using System.Web.Mvc;
     using System.Linq;
     using System.Web.Routing;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
+    using WomenMarket.Models.EntityModels;
 
     public class BaseController : Controller
     {

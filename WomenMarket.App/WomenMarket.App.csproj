@@ -271,12 +271,6 @@
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FarmsService.cs" />
-    <Compile Include="Services\OrdersService.cs" />
-    <Compile Include="Services\ProductsService.cs" />
-    <Compile Include="Services\ProfileService.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\ShoppingCartService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +391,10 @@
     <ProjectReference Include="..\WomenMarket.Models\WomenMarket.Models.csproj">
       <Project>{953FE36B-CF99-4806-AC16-867A7C820042}</Project>
       <Name>WomenMarket.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WomenMarket.Services\WomenMarket.Services.csproj">
+      <Project>{b8250948-f116-4ce1-ab53-304819f3ad5a}</Project>
+      <Name>WomenMarket.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

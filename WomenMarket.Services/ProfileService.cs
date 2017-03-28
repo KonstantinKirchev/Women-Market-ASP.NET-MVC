@@ -1,17 +1,14 @@
-﻿using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Services
+﻿namespace WomenMarket.Services
 {
-    using System.Linq;
-    using AutoMapper;
-    using Models.ViewModels;
-    using Data.UnitOfWork;
-    using WomenMarket.Models;
     using System;
     using System.Collections.Generic;
-    using WomenMarket.Models.Enums;
+    using System.Linq;
+    using AutoMapper;
+    using Data.UnitOfWork;
+    using Models.BindingModels;
+    using Models.EntityModels;
+    using Models.Enums;
+    using Models.ViewModels;
 
     public class ProfileService : Service
     {

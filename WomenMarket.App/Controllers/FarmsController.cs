@@ -1,12 +1,10 @@
-﻿using System.Web.Mvc;
-using System.Web.UI;
-using WomenMarket.App.Services;
-using WomenMarket.Data.UnitOfWork;
-using WomenMarket.Models;
-using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
+    using System.Web.Mvc;
+    using Data.UnitOfWork;
+    using WomenMarket.Models.EntityModels;
+    using Services;
+
     [RoutePrefix("farms")]
     public class FarmsController : BaseController
     {

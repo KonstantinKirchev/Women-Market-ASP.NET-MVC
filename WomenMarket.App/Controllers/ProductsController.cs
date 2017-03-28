@@ -1,11 +1,9 @@
-﻿using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Services;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
+    using WomenMarket.Models.EntityModels;
 
     [RoutePrefix("products")]
     public class ProductsController : BaseController

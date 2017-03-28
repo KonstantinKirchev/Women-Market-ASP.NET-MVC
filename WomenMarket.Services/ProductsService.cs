@@ -1,15 +1,12 @@
-﻿using System.Web.Mvc;
-using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Services
+﻿namespace WomenMarket.Services
 {
-    using Data.UnitOfWork;
-    using WomenMarket.Models;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Web.Mvc;
     using AutoMapper;
+    using Data.UnitOfWork;
+    using Models.BindingModels;
+    using Models.EntityModels;
     using Models.ViewModels;
 
     public class ProductsService : Service
