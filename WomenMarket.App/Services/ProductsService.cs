@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
-using WomenMarket.App.Areas.Admin.Models.BindingModels;
+using WomenMarket.Models.BindingModels;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App.Services
 {

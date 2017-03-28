@@ -1,5 +1,6 @@
 ﻿using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.App.Services
 {

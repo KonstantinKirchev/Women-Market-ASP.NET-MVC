@@ -1,16 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WomenMarket.Models
+namespace WomenMarket.Models.BindingModels
 {
-    public class Farm
+    public class FarmBindingModel
     {
-        public Farm()
-        {
-            this.Products = new HashSet<Product>();
-        }
-
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -20,8 +13,6 @@ namespace WomenMarket.Models
         public string Description { get; set; }
 
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -32,7 +23,5 @@ namespace WomenMarket.Models
 
         [Required]
         public string ImageUrl { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
     }
 }

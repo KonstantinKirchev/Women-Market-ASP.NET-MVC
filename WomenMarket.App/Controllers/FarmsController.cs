@@ -3,6 +3,7 @@ using System.Web.UI;
 using WomenMarket.App.Services;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.App.Controllers
 {

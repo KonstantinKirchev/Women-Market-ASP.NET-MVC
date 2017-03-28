@@ -10,6 +10,7 @@ using WomenMarket.App;
 using WomenMarket.Data;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]

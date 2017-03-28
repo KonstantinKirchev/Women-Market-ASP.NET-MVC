@@ -1,8 +1,7 @@
-﻿namespace WomenMarket.App.Areas.Admin.Models.BindingModels
-{
-    using System.ComponentModel.DataAnnotations;
-    using WomenMarket.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace WomenMarket.Models.BindingModels
+{
     public class ProductBindingModel
     {
         public int Id { get; set; }

@@ -1,5 +1,5 @@
 ﻿@using WomenMarket.App.Models.ViewModels
-@model FarmViewModel
+@model WomenMarket.Models.ViewModels.FarmViewModel
 @{
     ViewBag.Title = "Add new farm";
 }
@@ -50,7 +50,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-primary" value="Add" />
-                <a class="btn btn-lg btn-danger" href="~/admin">Cancel</a>
+                @Html.ActionLink("Cancel", "Index", "HomeAdmin", routeValues: new { area = "Admin" }, htmlAttributes: new { @class = "btn btn-danger" })
             </div>
         </div>
     }

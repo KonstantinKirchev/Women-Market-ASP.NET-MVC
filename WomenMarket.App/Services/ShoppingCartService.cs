@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App.Services
 {

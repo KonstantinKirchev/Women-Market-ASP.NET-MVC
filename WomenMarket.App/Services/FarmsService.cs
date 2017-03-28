@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using WomenMarket.App.Areas.Admin.Models.BindingModels;
 using WomenMarket.App.Models.ViewModels;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models;
+using WomenMarket.Models.BindingModels;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App.Services
 {

@@ -1,4 +1,6 @@
 ﻿using WomenMarket.App.Models.ViewModels;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App.Services
 {
@@ -7,7 +9,6 @@ namespace WomenMarket.App.Services
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
-    using Areas.Admin.Models.ViewModels;
     using System;
     using WomenMarket.Models.Enums;
 
@@ -59,10 +60,10 @@ namespace WomenMarket.App.Services
             return viewModels;
         }
 
-        public IEnumerable<Models.ViewModels.ProductViewModel> GetOrderProducts(int id)
+        public IEnumerable<ProductViewModel> GetOrderProducts(int id)
         {
             var products = this.Data.ShoppingCarts.Find(id).Products.ToList();
-            IEnumerable<App.Models.ViewModels.ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<App.Models.ViewModels.ProductViewModel>>(products);
+            IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
 
             return viewModels;
         }

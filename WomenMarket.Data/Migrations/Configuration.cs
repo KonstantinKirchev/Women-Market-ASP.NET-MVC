@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.Data.Migrations
 {

@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 using WomenMarket.Models.Enums;
 
-namespace WomenMarket.App.Models.ViewModels
+namespace WomenMarket.Models.ViewModels
 {
-    public class MyOrderViewModel
+    public class OrderViewModel
     {
-        public MyOrderViewModel()
-        {
-            this.Products = new HashSet<Product>();
-        }
-
         public int Id { get; set; }
+
+        public OrderStatus Status { get; set; }
 
         public decimal TotalPrice { get; set; }
 
@@ -20,7 +17,7 @@ namespace WomenMarket.App.Models.ViewModels
 
         public DateTime? DateOfDelivery { get; set; }
 
-        public OrderStatus Status { get; set; }
+        public User Owner { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

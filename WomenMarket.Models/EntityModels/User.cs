@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WomenMarket.Models
+namespace WomenMarket.Models.EntityModels
 {
-    using System.Security.Claims;
-    using System.Threading.Tasks;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-
     public class User : IdentityUser
     {
         public User()

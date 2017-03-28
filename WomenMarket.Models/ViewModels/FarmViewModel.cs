@@ -1,4 +1,4 @@
-﻿namespace WomenMarket.App.Models.ViewModels
+﻿namespace WomenMarket.Models.ViewModels
 {
     public class FarmViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WomenMarket.Models
+namespace WomenMarket.Models.EntityModels
 {
     public class Category
     {

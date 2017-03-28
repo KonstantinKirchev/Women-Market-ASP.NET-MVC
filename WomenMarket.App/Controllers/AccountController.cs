@@ -9,8 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WomenMarket.App.Models;
+using WomenMarket.App.Models.ViewModels;
 using WomenMarket.Data;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 using WomenMarket.Models.Enums;
 
 namespace WomenMarket.App.Controllers

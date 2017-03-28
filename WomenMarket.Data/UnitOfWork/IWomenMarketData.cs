@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Data.UnitOfWork
+﻿using WomenMarket.Models.EntityModels;
+
+namespace WomenMarket.Data.UnitOfWork
 {
     using Repositories;
     using Models;

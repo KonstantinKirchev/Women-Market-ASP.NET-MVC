@@ -1,4 +1,5 @@
-﻿using WomenMarket.App.Areas.Admin.Models.ViewModels;
+﻿using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App
 {

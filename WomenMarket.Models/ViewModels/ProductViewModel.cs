@@ -1,9 +1,9 @@
-﻿namespace WomenMarket.App.Models.ViewModels
-{
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
+namespace WomenMarket.Models.ViewModels
+{
     public class ProductViewModel
     {
         public int Id { get; set; }

@@ -1,11 +1,11 @@
-﻿namespace WomenMarket.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WomenMarket.Models.Enums;
 
+namespace WomenMarket.Models.EntityModels
+{
     public class ShoppingCart
     {
         public ShoppingCart()

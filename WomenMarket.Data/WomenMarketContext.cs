@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.Data
 {

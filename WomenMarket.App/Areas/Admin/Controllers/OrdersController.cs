@@ -1,4 +1,5 @@
 ﻿using WomenMarket.App.Models.ViewModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.App.Areas.Admin.Controllers
 {
@@ -6,7 +7,6 @@ namespace WomenMarket.App.Areas.Admin.Controllers
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using WomenMarket.Models;
-    using Models.ViewModels;
     using Services;
 
     public class OrdersController : BaseAdminController
@@ -45,7 +45,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Products(int id)
         {
-            IEnumerable<App.Models.ViewModels.ProductViewModel> viewModels = service.GetOrderProducts(id);
+            IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
             
             return View(viewModels);
         }

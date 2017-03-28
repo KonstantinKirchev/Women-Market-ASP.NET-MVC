@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Models.EntityModels;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Services;

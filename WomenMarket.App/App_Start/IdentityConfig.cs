@@ -8,6 +8,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WomenMarket.Data;
 using WomenMarket.Models;
+using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.App
 {

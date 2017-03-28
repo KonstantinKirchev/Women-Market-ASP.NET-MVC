@@ -1,4 +1,8 @@
-﻿namespace WomenMarket.App.Services
+﻿using WomenMarket.Models.BindingModels;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
+
+namespace WomenMarket.App.Services
 {
     using System.Linq;
     using AutoMapper;
@@ -7,7 +11,6 @@
     using WomenMarket.Models;
     using System;
     using System.Collections.Generic;
-    using Models.BindingModels;
     using WomenMarket.Models.Enums;
 
     public class ProfileService : Service

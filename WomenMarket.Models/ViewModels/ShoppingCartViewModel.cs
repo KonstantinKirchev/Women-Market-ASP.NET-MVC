@@ -1,8 +1,8 @@
-﻿namespace WomenMarket.App.Models.ViewModels
-{
-    using System.Collections.Generic;
-    using WomenMarket.Models;
+﻿using System.Collections.Generic;
+using WomenMarket.Models.EntityModels;
 
+namespace WomenMarket.Models.ViewModels
+{
     public class ShoppingCartViewModel
     {
         public ShoppingCartViewModel()

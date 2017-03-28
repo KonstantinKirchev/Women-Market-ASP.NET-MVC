@@ -1,8 +1,11 @@
-﻿namespace WomenMarket.App.Areas.Admin.Controllers
+﻿using WomenMarket.Models.BindingModels;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
+
+namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using Models.BindingModels;
     using WomenMarket.Models;
     using System.Net;
     using App.Models.ViewModels;
