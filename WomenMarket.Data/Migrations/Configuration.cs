@@ -18,6 +18,15 @@ namespace WomenMarket.Data.Migrations
 
         protected override void Seed(WomenMarketContext context)
         {
+            if (!context.Roles.Any(r => r.Name == "User"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "User" };
+
+                manager.Create(role);
+            }
+
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);

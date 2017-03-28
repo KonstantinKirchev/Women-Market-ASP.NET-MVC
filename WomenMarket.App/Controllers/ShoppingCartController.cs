@@ -1,4 +1,5 @@
-﻿using WomenMarket.App.Models.ViewModels;
+﻿using System.Collections.Generic;
+using WomenMarket.App.Models.ViewModels;
 using WomenMarket.App.Services;
 using WomenMarket.Models.Enums;
 
@@ -102,6 +103,14 @@ namespace WomenMarket.App.Controllers
             service.MakeAnOrder(id, totalAmount);
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Products(int id)
+        {
+            IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
+
+            return View(viewModels);
         }
     }
 }

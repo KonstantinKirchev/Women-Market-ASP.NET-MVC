@@ -1,14 +1,10 @@
 ﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Mvc;
-    using AutoMapper;
     using Data.UnitOfWork;
     using WomenMarket.Models;
-    using System;
     using Models.ViewModels;
-    using WomenMarket.Models.Enums;
     using Services;
 
     public class OrdersController : BaseAdminController

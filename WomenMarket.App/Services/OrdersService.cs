@@ -57,7 +57,7 @@
             return viewModels;
         }
 
-        public IEnumerable<App.Models.ViewModels.ProductViewModel> GetOrderProducts(int id)
+        public IEnumerable<Models.ViewModels.ProductViewModel> GetOrderProducts(int id)
         {
             var products = this.Data.ShoppingCarts.Find(id).Products.ToList();
             IEnumerable<App.Models.ViewModels.ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<App.Models.ViewModels.ProductViewModel>>(products);

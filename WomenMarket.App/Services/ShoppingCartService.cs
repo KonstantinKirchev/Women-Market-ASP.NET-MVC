@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WomenMarket.App.Services
 {
@@ -131,6 +132,14 @@ namespace WomenMarket.App.Services
             }
 
             return true;
+        }
+
+        public IEnumerable<ProductViewModel> GetOrderProducts(int id)
+        {
+            var products = this.Data.ShoppingCarts.Find(id).Products.ToList();
+            IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
+
+            return viewModels;
         }
     }
 }
