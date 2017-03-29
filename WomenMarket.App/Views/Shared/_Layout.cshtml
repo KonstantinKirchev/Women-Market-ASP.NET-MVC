@@ -25,7 +25,7 @@
                     @{
                         if (User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Admin", "Index", "HomeAdmin", routeValues: new {area = "Admin"}, htmlAttributes: null)</li>
+                            <li>@Html.ActionLink("Admin", "Index", "HomeAdmin", routeValues: new { area = "Admin" }, htmlAttributes: null)</li>
                         }
                     }
                     <li>@Html.ActionLink("Farms", "All", "Farms")</li>
@@ -35,11 +35,11 @@
                             Products <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation">@Html.ActionLink("All", "All", "Products")</li>
-                            <li role="presentation">@Html.ActionLink("Fruits", "fruits", "Products")</li>
-                            <li role="presentation">@Html.ActionLink("Vegetables", "vegetables", "Products")</li>
-                            <li role="presentation">@Html.ActionLink("Diary", "diary", "Products")</li>
-                            <li role="presentation">@Html.ActionLink("Meats", "meats", "Products")</li>
+                            <li role="presentation">@Html.ActionLink("All", "All", "Products", routeValues: new { area = "", category = "" }, htmlAttributes: null)</li>
+                            <li role="presentation">@Html.ActionLink("Fruits", "All", "Products", routeValues: new { area = "", category = "fruits" }, htmlAttributes: null)</li>
+                            <li role="presentation">@Html.ActionLink("Vegetables", "All", "Products", routeValues: new { area = "", category = "vegetables" }, htmlAttributes: null)</li>
+                            <li role="presentation">@Html.ActionLink("Dairy", "All", "Products", routeValues: new { area = "", category = "dairy" }, htmlAttributes: null)</li>
+                            <li role="presentation">@Html.ActionLink("Meats", "All", "Products", routeValues: new { area = "", category = "meats" }, htmlAttributes: null)</li>
                         </ul>
                     </li>
                 </ul>

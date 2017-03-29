@@ -10,12 +10,14 @@
     {
         private FarmsService service;
 
-        public FarmsController(IWomenMarketData data) : base(data)
+        public FarmsController(IWomenMarketData data) 
+            : base(data)
         {
             this.service = new FarmsService(data);
         }
 
-        public FarmsController(IWomenMarketData data, User user) : base(data, user)
+        public FarmsController(IWomenMarketData data, User user) 
+            : base(data, user)
         {
         }
 

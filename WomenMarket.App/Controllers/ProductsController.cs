@@ -1,4 +1,7 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using System.Collections.Generic;
+using WomenMarket.Models.ViewModels;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Services;
@@ -20,18 +23,11 @@
         }
 
         [HttpGet]
-        [Route]
-        public ActionResult All()
-        {
-            var products = this.service.GetAllProducts();
-            return View(products);
-        }
-
-        [HttpGet]
-        [Route("{category}")]
+        [Route("{category?}")]
         public ActionResult All(string category)
         {
-            var products = this.service.GetFilteredProducts(category);
+            IEnumerable<ProductViewModel>  products = category == null ? this.service.GetAllProducts() : this.service.GetFilteredProducts(category);
+
             return View(products);
         }
 
