@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WomenMarket.Models.ViewModels;
+﻿using PagedList;
 
 namespace WomenMarket.App.Controllers
 {
@@ -7,44 +6,71 @@ namespace WomenMarket.App.Controllers
     using Services;
     using Data.UnitOfWork;
     using WomenMarket.Models.EntityModels;
+    using System.Collections.Generic;
+    using WomenMarket.Models.ViewModels;
 
     [RoutePrefix("products")]
     public class ProductsController : BaseController
     {
         private ProductsService service;
 
-        public ProductsController(IWomenMarketData data) : base(data)
+        public ProductsController(IWomenMarketData data) 
+            : base(data)
         {
             this.service = new ProductsService(data);
         }
 
-        public ProductsController(IWomenMarketData data, User user) : base(data, user)
+        public ProductsController(IWomenMarketData data, User user) 
+            : base(data, user)
         {
         }
 
         [HttpGet]
         [Route("{category?}")]
-        public ActionResult All(string category)
+        public ActionResult All(string category, int? page)
         {
             IEnumerable<ProductViewModel>  products = category == null ? this.service.GetAllProducts() : this.service.GetFilteredProducts(category);
 
-            return View(products);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
         [Route("search")]
-        public ActionResult Search(string product)
+        public ActionResult Search(string currentFilter, string product, int? page)
         {
+            if (product != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                product = currentFilter;
+
+            }
+
+            ViewBag.CurrentFilter = product;
+
             var products = this.service.GetSearchedProducts(product);
-            return View(products);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
         [Route("farm/{farmName}")]
-        public ActionResult ByFarm(string farmName)
+        public ActionResult ByFarm(string farmName, int? page)
         {
             var products = this.service.GetProductsByFarm(farmName);
-            return View(products);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
     }
 }

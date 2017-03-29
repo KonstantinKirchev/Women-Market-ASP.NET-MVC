@@ -245,4 +245,8 @@ body > div.container-fluid > div > h1 {
     text-align: center;
 }
 
+.navbar-form {
+    padding-left: 0;
+}
+
 
