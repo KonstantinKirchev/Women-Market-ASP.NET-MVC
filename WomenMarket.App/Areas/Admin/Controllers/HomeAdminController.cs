@@ -1,12 +1,12 @@
-﻿using WomenMarket.Data.UnitOfWork;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
+    using Data.UnitOfWork;
 
     public class HomeAdminController : BaseAdminController
     {
-        public HomeAdminController(IWomenMarketData data) : base(data)
+        public HomeAdminController(IWomenMarketData data) 
+            : base(data)
         {
         }
 

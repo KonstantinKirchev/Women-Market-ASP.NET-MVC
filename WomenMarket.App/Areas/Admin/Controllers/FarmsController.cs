@@ -5,7 +5,6 @@
     using System.Net;
     using Services;
     using WomenMarket.Models.BindingModels;
-    using WomenMarket.Models.EntityModels;
     using WomenMarket.Models.ViewModels;
 
     public class FarmsController : BaseAdminController
@@ -41,6 +40,11 @@
         {
             FarmViewModel viewModel = service.GetEditFarm(id);
 
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(viewModel);
         }
 
@@ -64,14 +68,12 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Farm farm = this.Data.Farms.Find(id);
+            FarmViewModel viewModel = service.GetDeleteFarm(id);
 
-            if (farm == null)
+            if (viewModel == null)
             {
                 return HttpNotFound();
             }
-
-            FarmViewModel viewModel = service.GetDeeteFarm(farm);
 
             return View(viewModel);
         }

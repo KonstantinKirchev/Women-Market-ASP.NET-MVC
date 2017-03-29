@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WomenMarket.Models.ViewModels
 {
     public class UserViewModel
     {
@@ -8,6 +10,7 @@
 
         public string Address { get; set; }
 
+        [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }

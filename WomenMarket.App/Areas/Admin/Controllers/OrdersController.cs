@@ -1,12 +1,9 @@
-﻿using WomenMarket.App.Models.ViewModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
+    using WomenMarket.Models.ViewModels;
     using Services;
 
     public class OrdersController : BaseAdminController

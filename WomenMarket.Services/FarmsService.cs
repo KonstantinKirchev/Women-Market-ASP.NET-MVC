@@ -1,20 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
-using WomenMarket.Data.UnitOfWork;
-using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.Services
+﻿namespace WomenMarket.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using AutoMapper;
+    using Data.UnitOfWork;
+    using Models.BindingModels;
+    using Models.EntityModels;
+    using Models.ViewModels;
+
     public class FarmsService : Service
     {
-        public FarmsService(IWomenMarketData data) : base(data)
+        public FarmsService(IWomenMarketData data) 
+            : base(data)
         {
         }
 
-        public FarmsService(IWomenMarketData data, User user) : base(data, user)
+        public FarmsService(IWomenMarketData data, User user) 
+            : base(data, user)
         {
         }
 
@@ -45,16 +47,12 @@ namespace WomenMarket.Services
         {
             Farm farm = this.Data.Farms.Find(id);
 
-            FarmViewModel viewModel = new FarmViewModel()
+            if (farm == null)
             {
-                Id = farm.Id,
-                Name = farm.Name,
-                Address = farm.Address,
-                PhoneNumber = farm.PhoneNumber,
-                ImageUrl = farm.ImageUrl,
-                Description = farm.Description,
-                Email = farm.Email
-            };
+                return null;
+            }
+
+            FarmViewModel viewModel = Mapper.Instance.Map<Farm, FarmViewModel>(farm);
 
             return viewModel;
         }
@@ -73,18 +71,16 @@ namespace WomenMarket.Services
             this.Data.SaveChanges();
         }
 
-        public FarmViewModel GetDeeteFarm(Farm farm)
+        public FarmViewModel GetDeleteFarm(int? id)
         {
-            FarmViewModel viewModel = new FarmViewModel()
+            Farm farm = this.Data.Farms.Find(id);
+
+            if (farm == null)
             {
-                Id = farm.Id,
-                Name = farm.Name,
-                Description = farm.Description,
-                Address = farm.Address,
-                Email = farm.Email,
-                PhoneNumber = farm.PhoneNumber,
-                ImageUrl = farm.ImageUrl
-            };
+                return null;
+            }
+
+            FarmViewModel viewModel = Mapper.Instance.Map<Farm, FarmViewModel>(farm);
 
             return viewModel;
         }

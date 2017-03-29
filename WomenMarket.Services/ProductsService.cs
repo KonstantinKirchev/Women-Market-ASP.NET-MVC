@@ -62,7 +62,7 @@
 
         public void CreateNewProduct(ProductBindingModel model)
         {
-            var product = new Product()
+            Product product = new Product()
             {
                 Name = model.Name,
                 Description = model.Description,
@@ -99,7 +99,7 @@
 
         public void EditProduct(ProductBindingModel model)
         {
-            var product = Data.Products.Find(model.Id);
+            Product product = Data.Products.Find(model.Id);
 
             product.Name = model.Name;
             product.Description = model.Description;
@@ -112,8 +112,15 @@
             this.Data.SaveChanges();
         }
 
-        public ProductViewModel GetDeleteProduct(Product product)
+        public ProductViewModel GetDeleteProduct(int? id)
         {
+            Product product = this.Data.Products.Find(id);
+
+            if (product == null)
+            {
+                return null;
+            }
+
             ProductViewModel viewModel = new ProductViewModel()
             {
                 Id = product.Id,

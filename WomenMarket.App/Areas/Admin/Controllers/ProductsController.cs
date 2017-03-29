@@ -1,15 +1,12 @@
-﻿using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using WomenMarket.Models;
     using System.Net;
     using Services;
-    using App.Models.ViewModels;
+    using WomenMarket.Models.BindingModels;
+    using WomenMarket.Models.EntityModels;
+    using WomenMarket.Models.ViewModels;
 
     public class ProductsController : BaseAdminController
     {
@@ -69,14 +66,12 @@ namespace WomenMarket.App.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Product product = this.Data.Products.Find(id);
+            ProductViewModel viewModel = service.GetDeleteProduct(id);
 
-            if (product == null)
+            if (viewModel == null)
             {
                 return HttpNotFound();
             }
-
-            ProductViewModel viewModel = service.GetDeleteProduct(product);
 
             return View(viewModel);
         }
