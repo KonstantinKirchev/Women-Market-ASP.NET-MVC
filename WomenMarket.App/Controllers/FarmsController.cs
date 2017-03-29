@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using PagedList;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -24,10 +26,14 @@
         [HttpGet]
         [Route]
         //[OutputCache(Duration = 60, Location = OutputCacheLocation.ServerAndClient)]
-        public ActionResult All()
+        public ActionResult All(int? page)
         {
             var farms = this.service.GetAllFarms();
-            return View(farms);
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+            return View(farms.ToPagedList(pageNumber, pageSize));
         }
     }
 }
