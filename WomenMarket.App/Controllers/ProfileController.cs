@@ -76,7 +76,6 @@
         {
             var username = User.Identity.Name;
             
-
             IEnumerable<MyOrderViewModel> viewModels = service.GetOrdersByStatus(username, status);
 
             int pageSize = 3;

@@ -5,6 +5,7 @@
     using Data.UnitOfWork;
     using WomenMarket.Models.ViewModels;
     using Services;
+    using PagedList;
 
     public class OrdersController : BaseAdminController
     {
@@ -17,11 +18,14 @@
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             IEnumerable<OrderViewModel> viewModels = service.GetAllOrders();
-            
-            return View(viewModels);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(viewModels.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -32,11 +36,14 @@
             return this.RedirectToAction("Index","Orders");
         }
 
-        public PartialViewResult OrdersByStatusPartial(string status)
+        public PartialViewResult OrdersByStatusPartial(string status, int? page)
         {
             IEnumerable<OrderViewModel> viewModels = service.GetOrdersByStatus(status);
 
-            return PartialView(viewModels);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return PartialView(viewModels.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
