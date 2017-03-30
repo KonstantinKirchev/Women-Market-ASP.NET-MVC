@@ -249,4 +249,8 @@ body > div.container-fluid > div > h1 {
     padding-left: 0;
 }
 
+body > div.container.body-content > table > tbody > tr > td {
+    vertical-align: middle;
+}
+
 
