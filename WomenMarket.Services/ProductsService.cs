@@ -69,7 +69,6 @@
                 Price = model.Price,
                 Quantity = model.Quantity,
                 ImageUrl = model.ImageUrl,
-                Units = 1,
                 CategoryId = model.CategoryId,
                 OwnerId = model.FarmId
             };

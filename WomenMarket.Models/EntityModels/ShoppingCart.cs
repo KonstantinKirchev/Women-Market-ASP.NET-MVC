@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using WomenMarket.Models.Enums;
-
-namespace WomenMarket.Models.EntityModels
+﻿namespace WomenMarket.Models.EntityModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Enums;
+
     public class ShoppingCart
     {
         public ShoppingCart()
         {
-            this.Products = new HashSet<Product>(); 
+            this.ShoppingCartProducts = new HashSet<ShoppingCartProduct>(); 
             this.Status = OrderStatus.Open;   
         }
 
@@ -33,6 +33,6 @@ namespace WomenMarket.Models.EntityModels
         [ForeignKey("UserId")]
         public User Owner { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ShoppingCartProduct> ShoppingCartProducts { get; set; }
     }
 }

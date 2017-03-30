@@ -28,7 +28,11 @@
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("MyOrders", new { page }))
+@if (Model.PageCount > 1)
+{
+    @Html.PagedListPager(Model, page => Url.Action("MyOrders", new { page }))
+}
+
 
 
 

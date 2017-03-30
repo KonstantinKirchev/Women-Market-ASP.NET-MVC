@@ -28,7 +28,7 @@
         {
             string username = this.User.Identity.Name;
 
-            ShoppingCartViewModel cart = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProduct> cart = service.MyShoppingCart(username);
 
             return View(cart);
         }
@@ -103,10 +103,18 @@
             return this.RedirectToAction("Index", "Home");
         }
 
+        //[HttpGet]
+        //public ActionResult Products(int id)
+        //{
+        //    IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
+
+        //    return View(viewModels);
+        //}
+
         [HttpGet]
         public ActionResult Products(int id)
         {
-            IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
+            IEnumerable<ShoppingCartProduct> viewModels = service.GetOrderProducts(id);
 
             return View(viewModels);
         }

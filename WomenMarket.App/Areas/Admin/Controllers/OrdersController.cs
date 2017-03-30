@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Areas.Admin.Controllers
+﻿using WomenMarket.Models.EntityModels;
+
+namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
@@ -49,7 +51,7 @@
         [HttpGet]
         public ActionResult Products(int id)
         {
-            IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
+            IEnumerable<ShoppingCartProduct> viewModels = service.GetOrderProducts(id);
             
             return View(viewModels);
         }

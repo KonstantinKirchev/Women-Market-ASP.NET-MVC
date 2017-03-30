@@ -1,10 +1,11 @@
-﻿@using WomenMarket.Models.ViewModels
-@model ShoppingCartViewModel
+﻿@using WomenMarket.Models.EntityModels
+@model IEnumerable<ShoppingCartProduct>
 @{
     ViewBag.Title = "My shopping cart";
+    ViewBag.ShoppingCartId = null;
 }
 
-@if (Model == null || Model.Products.Count == 0)
+@if (Model == null || !Model.Any())
 {
     <div class="container">
         <h1>You don't have any products in your shopping cart.</h1>
@@ -28,21 +29,23 @@ else
                 @{
                     decimal total = 0.00m;
                 }
-                @foreach (var product in Model.Products)
+                @foreach (var cart in Model)
                 {
-                    total += (product.Price * product.Units);
+                    ViewBag.ShoppingCartId = cart.ShoppingCartId;
+
+                    total += (cart.Product.Price * cart.Units);
                     <tr>
-                        <td>@product.Name</td>
-                        <td>@Html.ActionLink("-", "DecreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-danger" }) <span id="units">@product.Units</span> @Html.ActionLink("+", "IncreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = Model.Id, id = product.Id }, htmlAttributes: new { @class = "btn btn-success" })</td>
-                        <td>@(product.Price * product.Units)</td>
-                        <td>@Html.ActionLink("Remove", "RemoveProduct", "ShoppingCart", routeValues: new {area = "", cartId = Model.Id, id = product.Id}, htmlAttributes: new {@class = "btn btn-danger"})</td>
+                        <td>@cart.Product.Name</td>
+                        <td>@Html.ActionLink("-", "DecreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = cart.ShoppingCartId, id = cart.ProductId }, htmlAttributes: new { @class = "btn btn-danger" }) <span id="units">@cart.Units</span> @Html.ActionLink("+", "IncreaseProductUnits", "ShoppingCart", routeValues: new { area = "", cartId = cart.ShoppingCartId, id = cart.ProductId }, htmlAttributes: new { @class = "btn btn-success" })</td>
+                        <td>@(cart.Product.Price * cart.Units)</td>
+                        <td>@Html.ActionLink("Remove", "RemoveProduct", "ShoppingCart", routeValues: new {area = "", cartId = cart.ShoppingCartId, id = cart.ProductId}, htmlAttributes: new {@class = "btn btn-danger"})</td>
                     </tr>
                 }
                 </tbody>
             </table>
         </div>
         <h2>Total: @total lv.</h2>
-        @Html.ActionLink("Order now", "PlaceOrder", "ShoppingCart", routeValues: new { area = "", id = Model.Id, totalAmount = total }, htmlAttributes: new { @class = "btn btn-success" })
+        @Html.ActionLink("Order now", "PlaceOrder", "ShoppingCart", routeValues: new { area = "", id = ViewBag.ShoppingCartId, totalAmount = total }, htmlAttributes: new { @class = "btn btn-success" })
         <br>
         <br>
     </div>

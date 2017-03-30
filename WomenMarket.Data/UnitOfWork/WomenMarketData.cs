@@ -1,6 +1,4 @@
-﻿using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.Data.UnitOfWork
+﻿namespace WomenMarket.Data.UnitOfWork
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +6,7 @@ namespace WomenMarket.Data.UnitOfWork
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Repositories;
-    using Models;
+    using Models.EntityModels;
 
     public class WomenMarketData : IWomenMarketData
     {
@@ -57,6 +55,11 @@ namespace WomenMarket.Data.UnitOfWork
         public IRepository<ShoppingCart> ShoppingCarts
         {
             get { return this.GetRepository<ShoppingCart>(); }
+        }
+
+        public IRepository<ShoppingCartProduct> ShoppingCartProducts
+        {
+            get { return this.GetRepository<ShoppingCartProduct>(); }
         }
 
         public IUserStore<User> UserStore

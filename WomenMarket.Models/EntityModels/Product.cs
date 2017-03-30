@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace WomenMarket.Models.EntityModels
+﻿namespace WomenMarket.Models.EntityModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Product
     {
         public Product()
         {
-            this.ShoppingCarts = new HashSet<ShoppingCart>();
-            this.Units = 1;
+            this.ShoppingCartProducts = new HashSet<ShoppingCartProduct>();
         }
 
         [Key]
@@ -28,8 +27,6 @@ namespace WomenMarket.Models.EntityModels
         [Required]
         public string Quantity { get; set; }
 
-        public int Units { get; set; }
-
         [Required]
         public string ImageUrl { get; set; }
 
@@ -43,7 +40,7 @@ namespace WomenMarket.Models.EntityModels
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
+        public virtual ICollection<ShoppingCartProduct> ShoppingCartProducts { get; set; }
 
     }
 }

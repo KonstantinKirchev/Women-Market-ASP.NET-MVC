@@ -17,6 +17,8 @@ namespace WomenMarket.Data.UnitOfWork
 
         IRepository<ShoppingCart> ShoppingCarts { get; }
 
+        IRepository<ShoppingCartProduct> ShoppingCartProducts { get; }
+
         int SaveChanges();
     }
 }

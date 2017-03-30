@@ -21,9 +21,35 @@ namespace WomenMarket.Data
 
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
+        public virtual DbSet<ShoppingCartProduct> ShoppingCartProducts { get; set; }
+
         public static WomenMarketContext Create()
         {
             return new WomenMarketContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            builder.Entity<ShoppingCart>().HasKey(q => q.Id);
+            builder.Entity<Product>().HasKey(q => q.Id);
+            builder.Entity<ShoppingCartProduct>().HasKey(q =>
+                new {
+                    q.ShoppingCartId,
+                    q.ProductId
+                });
+
+            // Relationships
+            builder.Entity<ShoppingCartProduct>()
+                .HasRequired(t => t.ShoppingCart)
+                .WithMany(t => t.ShoppingCartProducts)
+                .HasForeignKey(t => t.ShoppingCartId);
+
+            builder.Entity<ShoppingCartProduct>()
+                .HasRequired(t => t.Product)
+                .WithMany(t => t.ShoppingCartProducts)
+                .HasForeignKey(t => t.ProductId);
+
+            base.OnModelCreating(builder);
         }
     }
 }

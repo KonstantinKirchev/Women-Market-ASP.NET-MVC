@@ -50,22 +50,33 @@
             return shoppingcart;
         }
 
-        public ShoppingCartViewModel MyShoppingCart(string username)
+        //public ShoppingCartViewModel MyShoppingCart(string username)
+        //{
+        //    User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
+
+        //    ShoppingCart shoppingcart =
+        //        this.Data.ShoppingCarts.All()
+        //            .FirstOrDefault(s => s.UserId == user.Id && s.Status == OrderStatus.Open);
+
+        //    ShoppingCartViewModel viewModel = null;
+
+        //    if (shoppingcart != null)
+        //    {
+        //        viewModel = Mapper.Instance.Map<ShoppingCart, ShoppingCartViewModel>(shoppingcart);
+        //    }
+
+        //    return viewModel;
+        //}
+
+        public IEnumerable<ShoppingCartProduct> MyShoppingCart(string username)
         {
             User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
 
-            ShoppingCart shoppingcart =
-                this.Data.ShoppingCarts.All()
-                    .FirstOrDefault(s => s.UserId == user.Id && s.Status == OrderStatus.Open);
+            IEnumerable<ShoppingCartProduct> shoppingcart =
+                this.Data.ShoppingCartProducts.All()
+                    .Where(s => s.ShoppingCart.UserId == user.Id && s.ShoppingCart.Status == OrderStatus.Open).ToList();
 
-            ShoppingCartViewModel viewModel = null;
-
-            if (shoppingcart != null)
-            {
-                viewModel = Mapper.Instance.Map<ShoppingCart, ShoppingCartViewModel>(shoppingcart);
-            }
-
-            return viewModel;
+            return shoppingcart;
         }
 
         public ShoppingCart GetCurrentShoppingCart(int cartId)
@@ -77,34 +88,82 @@
 
         public void AddToShoppingCart(ShoppingCart cart, Product product)
         {
-            cart.Products.Add(product);
+            var products =
+                this.Data.ShoppingCartProducts.All()
+                .Where(sp => sp.ShoppingCartId == cart.Id).Select(sp => sp.Product).ToList();
+
+            ShoppingCartProduct shoppingCartProduct =
+                this.Data.ShoppingCartProducts.All()
+                .FirstOrDefault(sp => sp.ShoppingCartId == cart.Id && sp.ProductId == product.Id);
+
+            if (products.Any())
+            {
+                foreach (var cartProduct in products)
+                {
+                    if (cartProduct.Id == product.Id)
+                    {
+                        if (shoppingCartProduct != null) shoppingCartProduct.Units++;
+                        this.Data.SaveChanges();
+                        return;
+                    }
+                }
+            }
+            
+            var newShoppingCartProduct = new ShoppingCartProduct()
+            {
+                ShoppingCartId = cart.Id,
+                ProductId = product.Id
+            };
+
+            this.Data.ShoppingCartProducts.Add(newShoppingCartProduct);
             this.Data.SaveChanges();
         }
 
         public void RemoveFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Units = 1;
-            cart.Products.Remove(product);
-            this.Data.SaveChanges();
+            var shoppingCartProduct = 
+                            this.Data.ShoppingCartProducts
+                            .All()
+                            .SingleOrDefault(mc => mc.ShoppingCartId == cart.Id && mc.ProductId == product.Id);
+
+            if (shoppingCartProduct != null)
+            {
+                this.Data.ShoppingCartProducts.Remove(shoppingCartProduct);
+                this.Data.SaveChanges();
+            }
         }
 
         public void DecreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Units -= 1;
+            var shoppingCartProduct =
+                            this.Data.ShoppingCartProducts
+                            .All()
+                            .SingleOrDefault(mc => mc.ShoppingCartId == cart.Id && mc.ProductId == product.Id);
 
-            if (product.Units == 0)
+            if (shoppingCartProduct != null)
             {
-                cart.Products.Remove(product);
-                product.Units = 1;
-            }
+                shoppingCartProduct.Units -= 1;
 
-            this.Data.SaveChanges();
+                if (shoppingCartProduct.Units == 0)
+                {
+                    this.Data.ShoppingCartProducts.Remove(shoppingCartProduct);
+                }
+                this.Data.SaveChanges();
+            } 
         }
 
         public void IncreaseProductUnitsFromShoppingCart(ShoppingCart cart, Product product)
         {
-            product.Units += 1;
-            this.Data.SaveChanges();
+            var shoppingCartProduct =
+                            this.Data.ShoppingCartProducts
+                            .All()
+                            .SingleOrDefault(mc => mc.ShoppingCartId == cart.Id && mc.ProductId == product.Id);
+
+            if (shoppingCartProduct != null)
+            {
+                shoppingCartProduct.Units += 1;
+                this.Data.SaveChanges();
+            }       
         }
 
         public void MakeAnOrder(int id, decimal totalAmount)
@@ -113,11 +172,7 @@
             cart.Status = OrderStatus.Pending;
             cart.TotalPrice = totalAmount;
             cart.DateOfOrder = DateTime.Now;
-            var products = this.Data.Products.All().ToList();
-            foreach (var product in products)
-            {
-                product.Units = 1;
-            }
+
             this.Data.SaveChanges();
         }
 
@@ -133,12 +188,13 @@
             return true;
         }
 
-        public IEnumerable<ProductViewModel> GetOrderProducts(int id)
+        public IEnumerable<ShoppingCartProduct> GetOrderProducts(int id)
         {
-            var products = this.Data.ShoppingCarts.Find(id).Products.ToList();
-            IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
+            var products =
+                this.Data.ShoppingCartProducts.All()
+                .Where(sp => sp.ShoppingCartId == id).ToList();
 
-            return viewModels;
+            return products;
         }
     }
 }

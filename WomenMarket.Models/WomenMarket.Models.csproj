@@ -89,6 +89,7 @@
     <Compile Include="BindingModels\ProductBindingModel.cs" />
     <Compile Include="BindingModels\UserBindingModel.cs" />
     <Compile Include="EntityModels\Category.cs" />
+    <Compile Include="EntityModels\ShoppingCartProduct.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="EntityModels\Farm.cs" />
     <Compile Include="EntityModels\Product.cs" />

@@ -1,5 +1,5 @@
-﻿@using WomenMarket.Models.ViewModels
-@model IEnumerable<ProductViewModel>
+﻿@using WomenMarket.Models.EntityModels
+@model IEnumerable<ShoppingCartProduct>
 
 @{
     ViewBag.Title = "Products in the order";
@@ -18,9 +18,9 @@
             @foreach (var product in Model)
             {
                 <tr>
-                    <td>@product.Name</td>
+                    <td>@product.Product.Name</td>
                     <td>@product.Units</td>
-                    <td>@product.Price lv.</td>
+                    <td>@product.Product.Price lv.</td>
                 </tr>
             }
         </tbody>

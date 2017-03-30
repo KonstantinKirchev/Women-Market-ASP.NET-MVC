@@ -57,12 +57,13 @@
             return viewModels;
         }
 
-        public IEnumerable<ProductViewModel> GetOrderProducts(int id)
+        public IEnumerable<ShoppingCartProduct> GetOrderProducts(int id)
         {
-            var products = this.Data.ShoppingCarts.Find(id).Products.ToList();
-            IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
+            var products =
+                this.Data.ShoppingCartProducts.All()
+                .Where(sp => sp.ShoppingCartId == id).ToList();
 
-            return viewModels;
+            return products;
         }
 
         public UserViewModel GetOrderOwner(int id)
