@@ -306,7 +306,7 @@
     <Content Include="Areas\Admin\Views\Farms\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Farms\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\OrdersByStatusPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_OrdersByStatusPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Products.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Client.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
@@ -374,7 +374,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\MyOrders.cshtml" />
-    <Content Include="Views\Profile\OrdersByStatusPartial.cshtml" />
+    <Content Include="Views\Profile\_OrdersByStatusPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>

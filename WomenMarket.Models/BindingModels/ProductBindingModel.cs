@@ -12,7 +12,6 @@ namespace WomenMarket.Models.BindingModels
         [Required]
         public string Description { get; set; }
 
-        [Required]
         public decimal Price { get; set; }
 
         [Required]

@@ -30,9 +30,11 @@
             if (ModelState.IsValid)
             {
                 service.CreateNewFarm(model);
+
+                return RedirectToAction("All", "Farms", routeValues: new { area = "" });
             }
 
-            return RedirectToAction("All", "Farms", routeValues: new { area = "" });
+            return this.View();
         }
 
         [HttpGet]
@@ -55,9 +57,11 @@
             if (ModelState.IsValid)
             {
                 service.EditFarm(model);
+
+                return RedirectToAction("All", "Farms", routeValues: new { area = "" });
             }
 
-            return RedirectToAction("All", "Farms", routeValues: new { area = "" });
+            return this.View();
         }
 
         [HttpGet]

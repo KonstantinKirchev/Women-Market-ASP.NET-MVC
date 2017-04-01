@@ -4,7 +4,6 @@
     using Data.UnitOfWork;
     using System.Collections.Generic;
     using WomenMarket.Models.EntityModels;
-    using WomenMarket.Models.ViewModels;
     using Services;
 
     [RoutePrefix("shoppingcart")]
@@ -102,14 +101,6 @@
 
             return this.RedirectToAction("Index", "Home");
         }
-
-        //[HttpGet]
-        //public ActionResult Products(int id)
-        //{
-        //    IEnumerable<ProductViewModel> viewModels = service.GetOrderProducts(id);
-
-        //    return View(viewModels);
-        //}
 
         [HttpGet]
         public ActionResult Products(int id)

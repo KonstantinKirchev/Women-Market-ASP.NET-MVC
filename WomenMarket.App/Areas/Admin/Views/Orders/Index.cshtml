@@ -27,7 +27,7 @@
             <br>
             <div class="oreders" id="orders">
                 @{
-                    Html.RenderPartial("OrdersByStatusPartial", Model);
+                    Html.RenderPartial("_OrdersByStatusPartial", Model);
                 }
             </div>
         </div>
@@ -40,7 +40,7 @@
         $(document).ready(function () {
             $("#status").change(function () {
                 var statusSelected = $("select option:selected").first().text();
-                $.get('@Url.Action("OrdersByStatusPartial")',
+                $.get('@Url.Action("_OrdersByStatusPartial")',
                     { status: statusSelected }, function (data) {
                         $("#orders").html(data);
                     });

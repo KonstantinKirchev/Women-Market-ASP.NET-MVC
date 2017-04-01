@@ -1,28 +1,21 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using WomenMarket.App.Models;
-using WomenMarket.App.Models.ViewModels;
-using WomenMarket.Data;
-using WomenMarket.Models;
-using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.Enums;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Models.ViewModels;
+    using Data;
+    using WomenMarket.Models.EntityModels;
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        WomenMarketContext context = new WomenMarketContext();
 
         public AccountController()
         {

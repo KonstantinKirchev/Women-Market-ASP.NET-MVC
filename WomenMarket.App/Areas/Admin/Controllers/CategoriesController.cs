@@ -43,7 +43,7 @@
                 return RedirectToAction("Index");
             }
 
-            return View(model);
+            return View();
         }
 
         [HttpGet]
@@ -70,10 +70,13 @@
         {
             if (ModelState.IsValid)
             {
-                service.EditCategory(model);  
+                service.EditCategory(model);
+
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            return this.View();
+
         }
 
         [HttpGet]

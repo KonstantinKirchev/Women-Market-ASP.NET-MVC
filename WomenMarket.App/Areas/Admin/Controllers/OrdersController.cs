@@ -1,6 +1,4 @@
-﻿using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
@@ -8,6 +6,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
     using WomenMarket.Models.ViewModels;
     using Services;
     using PagedList;
+    using WomenMarket.Models.EntityModels;
 
     public class OrdersController : BaseAdminController
     {
@@ -38,7 +37,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
             return this.RedirectToAction("Index","Orders");
         }
 
-        public PartialViewResult OrdersByStatusPartial(string status, int? page)
+        public PartialViewResult _OrdersByStatusPartial(string status, int? page)
         {
             IEnumerable<OrderViewModel> viewModels = service.GetOrdersByStatus(status);
 

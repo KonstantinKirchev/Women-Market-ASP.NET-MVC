@@ -53,10 +53,12 @@
                 var username = User.Identity.Name;
 
                 service.EditUser(username, model);
-                
+
+                return RedirectToAction("Index", "Profile", routeValues: new { area = "" });
+
             }
 
-            return RedirectToAction("Index", "Profile", routeValues: new { area = "" });
+            return this.View();
         }
 
         [HttpGet]
@@ -72,7 +74,8 @@
             return View(viewModels.ToPagedList(pageNumber, pageSize));
         }
 
-        public PartialViewResult OrdersByStatusPartial(string status, int? page)
+        [HttpGet]
+        public PartialViewResult _OrdersByStatusPartial(string status, int? page)
         {
             var username = User.Identity.Name;
             

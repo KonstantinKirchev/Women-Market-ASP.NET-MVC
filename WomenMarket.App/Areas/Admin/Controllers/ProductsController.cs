@@ -5,7 +5,6 @@
     using System.Net;
     using Services;
     using WomenMarket.Models.BindingModels;
-    using WomenMarket.Models.EntityModels;
     using WomenMarket.Models.ViewModels;
 
     public class ProductsController : BaseAdminController
@@ -33,9 +32,11 @@
             if (ModelState.IsValid)
             {
                 service.CreateNewProduct(model);
+
+                return RedirectToAction("All", "Products", routeValues: new { area = "" });
             }
 
-            return RedirectToAction("All", "Products", routeValues: new { area = "" });
+            return this.View();
         }
 
         [HttpGet]
@@ -53,9 +54,11 @@
             if (ModelState.IsValid)
             {
                 service.EditProduct(model);
+
+                return RedirectToAction("All", "Products", routeValues: new { area = "" });
             }
 
-            return RedirectToAction("All", "Products", routeValues: new { area = "" });
+            return this.View();
         }
 
         [HttpGet]
