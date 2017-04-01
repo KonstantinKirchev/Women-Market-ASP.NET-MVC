@@ -1,4 +1,5 @@
-﻿@using WomenMarket.Models.ViewModels
+﻿@using WomenMarket.App.Extensions
+@using WomenMarket.Models.ViewModels
 @model CategoryViewModel
 
 @{
@@ -26,7 +27,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.Submit("Edit")
                 @Html.ActionLink("Cancel", "Index", routeValues: new { area = "Admin" }, htmlAttributes: new { @class = "btn btn-danger" })
             </div>
         </div>
