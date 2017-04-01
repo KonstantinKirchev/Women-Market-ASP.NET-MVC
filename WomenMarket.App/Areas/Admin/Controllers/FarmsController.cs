@@ -7,6 +7,8 @@
     using WomenMarket.Models.BindingModels;
     using WomenMarket.Models.ViewModels;
 
+    [RouteArea("Admin")]
+    [RoutePrefix("farms")]
     public class FarmsController : BaseAdminController
     {
         private FarmsService service;
@@ -38,6 +40,7 @@
         }
 
         [HttpGet]
+        [Route("{id}/edit")]
         public ActionResult Edit(int id)
         {
             FarmViewModel viewModel = service.GetEditFarm(id);
@@ -65,6 +68,7 @@
         }
 
         [HttpGet]
+        [Route("{id}/delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

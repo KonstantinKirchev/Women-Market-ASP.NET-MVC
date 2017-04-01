@@ -8,6 +8,8 @@
     using PagedList;
     using WomenMarket.Models.EntityModels;
 
+    [RouteArea("Admin")]
+    [RoutePrefix("orders")]
     public class OrdersController : BaseAdminController
     {
         private OrdersService service;
@@ -48,6 +50,7 @@
         }
 
         [HttpGet]
+        [Route("{id}/products")]
         public ActionResult Products(int id)
         {
             IEnumerable<ShoppingCartProduct> viewModels = service.GetOrderProducts(id);
@@ -56,6 +59,7 @@
         }
 
         [HttpGet]
+        [Route("{id}/client")]
         public ActionResult Client(int id)
         {
             UserViewModel user = service.GetOrderOwner(id);
