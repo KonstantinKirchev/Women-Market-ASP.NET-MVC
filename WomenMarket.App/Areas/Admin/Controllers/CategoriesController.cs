@@ -1,26 +1,29 @@
 ﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
-    using System.Data.Entity;
-    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-    using Data;
-    using WomenMarket.Models.EntityModels;
     using Data.UnitOfWork;
+    using Services;
+    using System.Collections.Generic;
+    using WomenMarket.Models.ViewModels;
+    using WomenMarket.Models.BindingModels;
 
     public class CategoriesController : BaseAdminController
     {
+        private CategoriesService service;
+
         public CategoriesController(IWomenMarketData data) 
             : base(data)
         {
+            service = new CategoriesService(data);
         }
 
-        private WomenMarketContext db = new WomenMarketContext();
-
-        // GET: Admin/Categories
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            IEnumerable<CategoryViewModel> categories = service.GetAllCategories();
+
+            return View(categories);
         }
 
         [HttpGet]
@@ -31,16 +34,16 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Category category)
+        public ActionResult Create(CategoryBindingModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                this.service.CreateNewCategory(model);
+                
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(model);
         }
 
         [HttpGet]
@@ -50,25 +53,27 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+
+            CategoryViewModel viewModel = service.GetEditCategory(id);
+
+            if (viewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Category category)
+        public ActionResult Edit(CategoryBindingModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                service.EditCategory(model);  
             }
-            return View(category);
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -78,32 +83,24 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+
+            CategoryViewModel viewModel = service.GetDeleteCategory(id);
+
+            if (viewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+
+            return View(viewModel);
         }
 
-        // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            service.DeleteCategory(id);
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return RedirectToAction("Index");
         }
     }
 }

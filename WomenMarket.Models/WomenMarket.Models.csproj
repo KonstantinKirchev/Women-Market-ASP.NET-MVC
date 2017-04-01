@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\CategoryBindingModel.cs" />
     <Compile Include="BindingModels\FarmBindingModel.cs" />
     <Compile Include="BindingModels\ProductBindingModel.cs" />
     <Compile Include="BindingModels\UserBindingModel.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="EntityModels\ShoppingCart.cs" />
     <Compile Include="EntityModels\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FarmViewModel.cs" />
     <Compile Include="ViewModels\MyOrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />

@@ -1,7 +1,4 @@
-﻿using WomenMarket.Models.EntityModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App
+﻿namespace WomenMarket.App
 {
     using System.Data.Entity;
     using System.Web.Mvc;
@@ -10,8 +7,8 @@ namespace WomenMarket.App
     using Data;
     using Data.Migrations;
     using AutoMapper;
-    using Models.ViewModels;
-    using WomenMarket.Models;
+    using WomenMarket.Models.EntityModels;
+    using WomenMarket.Models.ViewModels;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -31,6 +28,7 @@ namespace WomenMarket.App
             {
                 expression.CreateMap<Farm, FarmViewModel>();
                 expression.CreateMap<Product, ProductViewModel>();
+                expression.CreateMap<Category, CategoryViewModel>();
                 expression.CreateMap<ShoppingCart, ShoppingCartViewModel>();
                 expression.CreateMap<ShoppingCart, OrderViewModel>();
                 expression.CreateMap<ShoppingCart, MyOrderViewModel>();
