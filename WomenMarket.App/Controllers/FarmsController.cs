@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -9,12 +11,12 @@
     [RoutePrefix("farms")]
     public class FarmsController : BaseController
     {
-        private FarmsService service;
+        private IFarmsService service;
 
-        public FarmsController(IWomenMarketData data) 
+        public FarmsController(IWomenMarketData data, IFarmsService service) 
             : base(data)
         {
-            this.service = new FarmsService(data);
+            this.service = service;
         }
 
         public FarmsController(IWomenMarketData data, User user) 

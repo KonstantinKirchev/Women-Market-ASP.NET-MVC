@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Services
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Services
 {
     using Data.UnitOfWork;
     using Models.EntityModels;
@@ -8,7 +10,7 @@
     using Models.BindingModels;
     using Models.ViewModels;
 
-    public class CategoriesService : Service
+    public class CategoriesService : Service, ICategoriesService
     {
         public CategoriesService(IWomenMarketData data) 
             : base(data)

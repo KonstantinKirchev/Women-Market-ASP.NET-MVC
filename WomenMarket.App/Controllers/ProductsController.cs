@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Services;
@@ -11,12 +13,12 @@
     [RoutePrefix("products")]
     public class ProductsController : BaseController
     {
-        private ProductsService service;
+        private IProductsService service;
 
-        public ProductsController(IWomenMarketData data) 
+        public ProductsController(IWomenMarketData data, IProductsService service) 
             : base(data)
         {
-            this.service = new ProductsService(data);
+            this.service = service;
         }
 
         public ProductsController(IWomenMarketData data, User user) 

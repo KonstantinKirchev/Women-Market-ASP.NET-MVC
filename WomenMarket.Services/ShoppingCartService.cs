@@ -1,15 +1,15 @@
-﻿namespace WomenMarket.Services
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using AutoMapper;
     using Data.UnitOfWork;
     using Models.EntityModels;
     using Models.Enums;
-    using Models.ViewModels;
 
-    public class ShoppingCartService : Service
+    public class ShoppingCartService : Service, IShoppingCartService
     {
         public ShoppingCartService(IWomenMarketData data) 
             : base(data)

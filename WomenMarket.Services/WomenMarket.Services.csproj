@@ -91,6 +91,12 @@
   <ItemGroup>
     <Compile Include="CategoriesService.cs" />
     <Compile Include="FarmsService.cs" />
+    <Compile Include="Interfaces\ICategoriesService.cs" />
+    <Compile Include="Interfaces\IFarmsService.cs" />
+    <Compile Include="Interfaces\IOrdersService.cs" />
+    <Compile Include="Interfaces\IProductsService.cs" />
+    <Compile Include="Interfaces\IProfileService.cs" />
+    <Compile Include="Interfaces\IShoppingCartService.cs" />
     <Compile Include="OrdersService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="ProfileService.cs" />
@@ -112,6 +118,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

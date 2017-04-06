@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Areas.Admin.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -11,12 +13,12 @@
     [RoutePrefix("farms")]
     public class FarmsController : BaseAdminController
     {
-        private FarmsService service;
+        private IFarmsService service;
 
-        public FarmsController(IWomenMarketData data) 
+        public FarmsController(IWomenMarketData data, IFarmsService service) 
             : base(data)
         {
-            service = new FarmsService(data);
+            this.service = service;
         }
 
         [HttpGet]
@@ -54,6 +56,7 @@
         }
 
         [HttpPost]
+        [Route("{id}/edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FarmBindingModel model)
         {
@@ -87,6 +90,7 @@
         }
 
         [HttpPost, ActionName("Delete")]
+        [Route("{id}/delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

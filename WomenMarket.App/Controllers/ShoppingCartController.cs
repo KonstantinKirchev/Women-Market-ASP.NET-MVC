@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -9,12 +11,12 @@
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : BaseController
     {
-        private ShoppingCartService service;
+        private IShoppingCartService service;
 
-        public ShoppingCartController(IWomenMarketData data) 
+        public ShoppingCartController(IWomenMarketData data, IShoppingCartService service) 
             : base(data)
         {
-            service = new ShoppingCartService(data);
+            this.service = service;
         }
 
         public ShoppingCartController(IWomenMarketData data, User user) 

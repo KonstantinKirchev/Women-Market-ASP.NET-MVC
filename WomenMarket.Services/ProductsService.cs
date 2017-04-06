@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Services
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Services
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,7 +11,7 @@
     using Models.EntityModels;
     using Models.ViewModels;
 
-    public class ProductsService : Service
+    public class ProductsService : Service, IProductsService
     {
         public ProductsService(IWomenMarketData data) 
             : base(data)

@@ -3,19 +3,19 @@
     using System.Net;
     using System.Web.Mvc;
     using Data.UnitOfWork;
-    using Services;
+    using Services.Interfaces;
     using System.Collections.Generic;
     using WomenMarket.Models.ViewModels;
     using WomenMarket.Models.BindingModels;
 
     public class CategoriesController : BaseAdminController
     {
-        private CategoriesService service;
+        private ICategoriesService service;
 
-        public CategoriesController(IWomenMarketData data) 
+        public CategoriesController(IWomenMarketData data, ICategoriesService service) 
             : base(data)
         {
-            service = new CategoriesService(data);
+            this.service = service;
         }
 
         [HttpGet]

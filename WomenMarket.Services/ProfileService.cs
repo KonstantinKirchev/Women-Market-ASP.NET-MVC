@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Services
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Services
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +12,7 @@
     using Models.Enums;
     using Models.ViewModels;
 
-    public class ProfileService : Service
+    public class ProfileService : Service, IProfileService
     {
         public ProfileService(IWomenMarketData data) 
             : base(data)

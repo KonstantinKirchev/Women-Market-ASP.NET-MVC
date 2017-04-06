@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Areas.Admin.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
@@ -12,12 +14,12 @@
     [RoutePrefix("orders")]
     public class OrdersController : BaseAdminController
     {
-        private OrdersService service;
+        private IOrdersService service;
 
-        public OrdersController(IWomenMarketData data) 
+        public OrdersController(IWomenMarketData data, IOrdersService service) 
             : base(data)
         {
-            service = new OrdersService(data);
+            this.service = service;
         }
 
         [HttpGet]

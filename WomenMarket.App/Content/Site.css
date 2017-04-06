@@ -253,4 +253,6 @@ body > div.container.body-content > table > tbody > tr > td {
     vertical-align: middle;
 }
 
-
+.input-validation-error {
+    border: 1px solid red;
+}

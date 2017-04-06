@@ -3,20 +3,20 @@
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using System.Net;
-    using Services;
     using WomenMarket.Models.BindingModels;
     using WomenMarket.Models.ViewModels;
+    using Services.Interfaces;
 
     [RouteArea("Admin")]
     [RoutePrefix("products")]
     public class ProductsController : BaseAdminController
     {
-        private ProductsService service;
+        private IProductsService service;
 
-        public ProductsController(IWomenMarketData data) 
+        public ProductsController(IWomenMarketData data, IProductsService service) 
             : base(data)
         {
-            service = new ProductsService(data);
+            this.service = service;
         }
 
         [HttpGet]
@@ -51,6 +51,7 @@
         }
 
         [HttpPost]
+        [Route("{id}/edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductBindingModel model)
         {
@@ -84,6 +85,7 @@
         }
 
         [HttpPost, ActionName("Delete")]
+        [Route("{id}/delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

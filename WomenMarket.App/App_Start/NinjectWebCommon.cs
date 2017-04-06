@@ -9,8 +9,9 @@ using Ninject.Web.Common;
 using WomenMarket.App;
 using WomenMarket.Data;
 using WomenMarket.Data.UnitOfWork;
-using WomenMarket.Models;
 using WomenMarket.Models.EntityModels;
+using WomenMarket.Services;
+using WomenMarket.Services.Interfaces;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -78,6 +79,14 @@ namespace WomenMarket.App
             kernel.Bind<IAuthenticationManager>()
                     .ToMethod<IAuthenticationManager>(context => HttpContext.Current.GetOwinContext().Authentication)
                     .InRequestScope();
-        }        
+
+            kernel.Bind<IFarmsService>().To<FarmsService>();
+            kernel.Bind<ICategoriesService>().To<CategoriesService>();
+            kernel.Bind<IProductsService>().To<ProductsService>();
+            kernel.Bind<IOrdersService>().To<OrdersService>();
+            kernel.Bind<IShoppingCartService>().To<ShoppingCartService>();
+            kernel.Bind<IProfileService>().To<ProfileService>();
+
+        }
     }
 }

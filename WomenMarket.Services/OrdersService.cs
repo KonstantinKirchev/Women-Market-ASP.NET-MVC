@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Services
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Services
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +11,7 @@
     using Models.Enums;
     using Models.ViewModels;
 
-    public class OrdersService : Service
+    public class OrdersService : Service, IOrdersService
     {
         public OrdersService(IWomenMarketData data) 
             : base(data)

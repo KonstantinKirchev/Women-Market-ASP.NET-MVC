@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -11,12 +13,12 @@
 
     public class ProfileController : BaseController
     {
-        private ProfileService service;
+        private IProfileService service;
 
-        public ProfileController(IWomenMarketData data) 
+        public ProfileController(IWomenMarketData data, IProfileService service) 
             : base(data)
         {
-            this.service = new ProfileService(data);
+            this.service = service;
         }
 
         public ProfileController(IWomenMarketData data, User user) 
