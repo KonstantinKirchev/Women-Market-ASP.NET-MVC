@@ -1,12 +1,10 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using WomenMarket.Models.EntityModels;
-    using Services;
     using PagedList;
+    using Services.Interfaces;
 
     [RoutePrefix("farms")]
     public class FarmsController : BaseController
