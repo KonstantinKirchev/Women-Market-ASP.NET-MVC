@@ -376,6 +376,7 @@
     <Content Include="Views\Profile\MyOrders.cshtml" />
     <Content Include="Views\Profile\_OrdersByStatusPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Products.cshtml" />
+    <Content Include="Views\ShoppingCart\_ShoppingCartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

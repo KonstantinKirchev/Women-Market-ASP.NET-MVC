@@ -1,12 +1,10 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using System.Collections.Generic;
     using WomenMarket.Models.EntityModels;
-    using Services;
+    using Services.Interfaces;
 
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : BaseController
