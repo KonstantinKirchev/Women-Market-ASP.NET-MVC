@@ -313,6 +313,8 @@
     <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\CategoryViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\OrderViewModel.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,6 +379,9 @@
     <Content Include="Views\Profile\_OrdersByStatusPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Products.cshtml" />
     <Content Include="Views\ShoppingCart\_ShoppingCartPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\FarmViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProductViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MyOrderViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

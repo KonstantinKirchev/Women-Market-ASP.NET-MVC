@@ -30,6 +30,7 @@
                 expression.CreateMap<Product, ProductViewModel>();
                 expression.CreateMap<Category, CategoryViewModel>();
                 expression.CreateMap<ShoppingCart, ShoppingCartViewModel>();
+                expression.CreateMap<ShoppingCartProduct, ShoppingCartProductViewModel>();
                 expression.CreateMap<ShoppingCart, OrderViewModel>();
                 expression.CreateMap<ShoppingCart, MyOrderViewModel>();
                 expression.CreateMap<User, UserViewModel>();

@@ -1,4 +1,6 @@
-﻿using WomenMarket.Services.Interfaces;
+﻿using AutoMapper;
+using WomenMarket.Models.ViewModels;
+using WomenMarket.Services.Interfaces;
 
 namespace WomenMarket.Services
 {
@@ -68,15 +70,17 @@ namespace WomenMarket.Services
         //    return viewModel;
         //}
 
-        public IEnumerable<ShoppingCartProduct> MyShoppingCart(string username)
+        public IEnumerable<ShoppingCartProductViewModel> MyShoppingCart(string username)
         {
             User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
 
-            IEnumerable<ShoppingCartProduct> shoppingcart =
+            IEnumerable<ShoppingCartProduct> shoppingcarts =
                 this.Data.ShoppingCartProducts.All()
                     .Where(s => s.ShoppingCart.UserId == user.Id && s.ShoppingCart.Status == OrderStatus.Open).ToList();
 
-            return shoppingcart;
+            IEnumerable<ShoppingCartProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<ShoppingCartProduct>, IEnumerable<ShoppingCartProductViewModel>>(shoppingcarts);
+
+            return viewModels;
         }
 
         public ShoppingCart GetCurrentShoppingCart(int cartId)

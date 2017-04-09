@@ -1,5 +1,4 @@
-﻿@using WomenMarket.Models.Enums
-@using WomenMarket.Models.ViewModels
+﻿@using WomenMarket.Models.ViewModels
 @model PagedList.IPagedList<OrderViewModel>
 @using PagedList.Mvc;
 
@@ -17,26 +16,15 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var order in Model)
-    {
-        <tr>
-            <td>@order.Id</td>
-            <td>@order.DateOfOrder</td>
-            <td>@order.DateOfDelivery</td>
-            <td>@Html.ActionLink("client", "Client", new { id = order.Id }, null)</td>
-            <td>@Html.ActionLink("products", "Products", new { id = order.Id }, null)</td>
-            <td>@order.TotalPrice lv.</td>
-            <td>@order.Status</td>
-            @if (order.Status == OrderStatus.Pending)
-            {
-                <td>@Html.ActionLink("Deliver", "DeliverOrder", "Orders", routeValues: new { area = "Admin", id = order.Id }, htmlAttributes: new { @class = "btn btn-danger" })</td>
-            }
-        </tr>
-    }
+    @Html.DisplayFor(order => order)
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+@if (Model.PageCount > 1)
+{
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+}
 
 
 

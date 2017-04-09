@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WomenMarket.Models.EntityModels;
+using WomenMarket.Models.ViewModels;
 
 namespace WomenMarket.Services.Interfaces
 {
@@ -7,7 +8,7 @@ namespace WomenMarket.Services.Interfaces
     {
         Product GetProduct(int id);
         ShoppingCart GetShoppingCart(string username);
-        IEnumerable<ShoppingCartProduct> MyShoppingCart(string username);
+        IEnumerable<ShoppingCartProductViewModel> MyShoppingCart(string username);
         ShoppingCart GetCurrentShoppingCart(int cartId);
         void AddToShoppingCart(ShoppingCart cart, Product product);
         void RemoveFromShoppingCart(ShoppingCart cart, Product product);

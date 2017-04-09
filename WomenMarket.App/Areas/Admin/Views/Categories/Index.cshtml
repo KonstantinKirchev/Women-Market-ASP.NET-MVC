@@ -15,17 +15,7 @@
         <th>Action</th>
     </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", routeValues: new { area = "Admin", id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", routeValues: new { area = "Admin", id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
+    @Html.DisplayFor(category => category)
 
 </table>
 

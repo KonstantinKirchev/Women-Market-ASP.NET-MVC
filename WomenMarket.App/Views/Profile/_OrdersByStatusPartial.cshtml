@@ -14,17 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var order in Model)
-    {
-        <tr>
-            <td>@order.Id</td>
-            <td>@order.DateOfOrder</td>
-            <td>@order.DateOfDelivery</td>
-            <td>@Html.ActionLink("products", "Products", "ShoppingCart", routeValues: new { area = "", id = order.Id }, htmlAttributes: null)</td>
-            <td>@order.TotalPrice lv.</td>
-            <td>@order.Status</td>
-        </tr>
-    }
+    @Html.DisplayFor(myOrder => myOrder)
     </tbody>
 </table>
 

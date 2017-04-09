@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Models.ViewModels;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -27,7 +29,7 @@
         {
             string username = this.User.Identity.Name;
 
-            IEnumerable<ShoppingCartProduct> cart = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> cart = service.MyShoppingCart(username);
 
             return View(cart);
         }
