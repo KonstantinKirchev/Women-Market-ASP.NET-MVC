@@ -80,12 +80,12 @@ namespace WomenMarket.App
                     .ToMethod<IAuthenticationManager>(context => HttpContext.Current.GetOwinContext().Authentication)
                     .InRequestScope();
 
-            kernel.Bind<IFarmsService>().To<FarmsService>();
-            kernel.Bind<ICategoriesService>().To<CategoriesService>();
-            kernel.Bind<IProductsService>().To<ProductsService>();
-            kernel.Bind<IOrdersService>().To<OrdersService>();
-            kernel.Bind<IShoppingCartService>().To<ShoppingCartService>();
-            kernel.Bind<IProfileService>().To<ProfileService>();
+            kernel.Bind<IFarmsService>().To<FarmsService>().InRequestScope();
+            kernel.Bind<ICategoriesService>().To<CategoriesService>().InRequestScope();
+            kernel.Bind<IProductsService>().To<ProductsService>().InRequestScope();
+            kernel.Bind<IOrdersService>().To<OrdersService>().InRequestScope();
+            kernel.Bind<IShoppingCartService>().To<ShoppingCartService>().InRequestScope();
+            kernel.Bind<IProfileService>().To<ProfileService>().InRequestScope();
 
         }
     }

@@ -1,4 +1,9 @@
-﻿namespace WomenMarket.Test
+﻿using Moq;
+using WomenMarket.App.Controllers;
+using WomenMarket.Data.UnitOfWork;
+using WomenMarket.Services.Interfaces;
+
+namespace WomenMarket.Test
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,10 +14,14 @@
     public class FarmsControllerTest
     {
         private MockContainer mocks;
+        private FarmsController controller;
+        private Mock<IWomenMarketData> dbMock;
+        private IFarmsService service;
 
         [TestInitialize]
         public void InitTest()
         {
+            this.dbMock = new Mock<IWomenMarketData>();
             this.mocks = new MockContainer();
             this.mocks.PrepareMocks();
         }
@@ -23,6 +32,12 @@
             //Arrange and Act
             var fakeFarms = this.mocks.FarmRepositoryMock.Object.All();
             var firstFarm = this.mocks.FarmRepositoryMock.Object.Find(1);
+
+            this.dbMock.Setup(c => c.Farms).Returns(this.mocks.FarmRepositoryMock.Object);
+
+            this.controller = new FarmsController(this.dbMock.Object, this.service);
+
+           // var result = this.controller.All(null);
 
             // Assert 
             Assert.AreEqual(3, fakeFarms.Count());
