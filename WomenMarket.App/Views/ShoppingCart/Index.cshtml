@@ -5,31 +5,3 @@
     ViewBag.ShoppingCartId = null;
     Html.RenderPartial("_ShoppingCartPartial", Model);
 }
-
-@section Scripts
-{
-    <script type="text/javascript">
-        $(document).ready(
-            function () {
-                //$("#myCart").load("/shoppingcart/all");
-                //$(".decrease").click(function() {
-                //    var oldUnits = parseInt($(".units").text());
-                //    $(".units").text(oldUnits - 1);
-                //    var productPrice = parseFloat($(".totalProductPrice").text());
-                //    var unitPrice = productPrice / oldUnits;
-                //    $(".totalProductPrice").text((productPrice - unitPrice).toFixed(2));
-                //    //console.log(unitPrice);
-                //});
-
-                //$(".increase").click(function () {
-                //    var oldUnits = parseInt($(".units").text());
-                //    $("#units").text(oldUnits + 1);
-                //    var productPrice = parseFloat($(".totalProductPrice").text());
-                //    var unitPrice = productPrice / oldUnits;
-                //    $(".totalProductPrice").text((productPrice + unitPrice).toFixed(2));
-                //    //console.log(unitPrice);
-                //});
-            }
-        );
-    </script>
-}

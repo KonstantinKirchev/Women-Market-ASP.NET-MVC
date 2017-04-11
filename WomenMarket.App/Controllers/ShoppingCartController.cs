@@ -1,12 +1,11 @@
-﻿using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using System.Collections.Generic;
     using WomenMarket.Models.EntityModels;
     using Services.Interfaces;
+    using WomenMarket.Models.ViewModels;
 
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : BaseController
@@ -113,7 +112,9 @@ namespace WomenMarket.App.Controllers
 
             service.MakeAnOrder(id, totalAmount);
 
-            return this.RedirectToAction("Index", "Home");
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+
+            return this.PartialView("_ShoppingCartPartial", carts);
         }
 
         [HttpGet]
