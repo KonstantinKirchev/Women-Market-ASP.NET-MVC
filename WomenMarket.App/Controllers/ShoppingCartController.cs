@@ -29,9 +29,9 @@ namespace WomenMarket.App.Controllers
         {
             string username = this.User.Identity.Name;
 
-            IEnumerable<ShoppingCartProductViewModel> cart = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
 
-            return View(cart);
+            return View(carts);
         }
 
         [HttpGet]
@@ -59,7 +59,11 @@ namespace WomenMarket.App.Controllers
 
             service.RemoveFromShoppingCart(cart, product);
 
-            return this.RedirectToAction("Index", "ShoppingCart");
+            string username = this.User.Identity.Name;
+
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+
+            return this.PartialView("_ShoppingCartPartial", carts);
         }
 
         [HttpGet]
@@ -72,7 +76,11 @@ namespace WomenMarket.App.Controllers
 
             service.DecreaseProductUnitsFromShoppingCart(cart, product);
 
-            return this.RedirectToAction("Index", "ShoppingCart");
+            string username = this.User.Identity.Name;
+
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+
+            return this.PartialView("_ShoppingCartPartial", carts);
         }
 
         [HttpGet]
@@ -85,7 +93,11 @@ namespace WomenMarket.App.Controllers
 
             service.IncreaseProductUnitsFromShoppingCart(cart, product);
 
-            return this.RedirectToAction("Index", "ShoppingCart");
+            string username = this.User.Identity.Name;
+
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+
+            return this.PartialView("_ShoppingCartPartial", carts);
         }
 
         [HttpGet]
