@@ -20,7 +20,7 @@
 
 @if (Model.PageCount > 1)
 {
-    @Html.PagedListPager(Model, page => Url.Action("MyOrders", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("MyOrders", "Profile", new { page }))
 }
 
 

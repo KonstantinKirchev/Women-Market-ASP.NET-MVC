@@ -378,12 +378,13 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\MyOrders.cshtml" />
-    <Content Include="Views\Profile\_OrdersByStatusPartial.cshtml" />
+    <Content Include="Views\Shared\_OrdersByStatusPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Products.cshtml" />
     <Content Include="Views\Shared\_ShoppingCartPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\FarmViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MyOrderViewModel.cshtml" />
+    <Content Include="Views\Shared\_ProductResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
