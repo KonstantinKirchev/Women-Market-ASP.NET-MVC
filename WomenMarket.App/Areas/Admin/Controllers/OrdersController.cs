@@ -1,12 +1,10 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using WomenMarket.Models.ViewModels;
-    using Services;
+    using Services.Interfaces;
     using PagedList;
     using WomenMarket.Models.EntityModels;
 

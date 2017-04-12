@@ -31,7 +31,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Add(ProductBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 service.CreateNewProduct(model);
 
@@ -55,7 +55,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 service.EditProduct(model);
 

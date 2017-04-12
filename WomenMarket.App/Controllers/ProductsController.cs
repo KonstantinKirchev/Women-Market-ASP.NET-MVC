@@ -1,9 +1,7 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
-    using Services;
+    using Services.Interfaces;
     using Data.UnitOfWork;
     using WomenMarket.Models.EntityModels;
     using System.Collections.Generic;

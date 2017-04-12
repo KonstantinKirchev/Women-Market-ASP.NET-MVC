@@ -36,7 +36,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CategoryBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 this.service.CreateNewCategory(model);
                 
@@ -68,7 +68,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CategoryBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 service.EditCategory(model);
 

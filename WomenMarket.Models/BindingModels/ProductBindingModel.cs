@@ -21,6 +21,7 @@ namespace WomenMarket.Models.BindingModels
         public string Quantity { get; set; }
 
         [Required]
+        [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
 
         public int CategoryId { get; set; }

@@ -1,6 +1,4 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Controllers
+﻿namespace WomenMarket.App.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
@@ -9,7 +7,7 @@ namespace WomenMarket.App.Controllers
     using WomenMarket.Models.BindingModels;
     using WomenMarket.Models.EntityModels;
     using WomenMarket.Models.ViewModels;
-    using Services;
+    using Services.Interfaces;
 
     public class ProfileController : BaseController
     {
@@ -50,7 +48,7 @@ namespace WomenMarket.App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 var username = User.Identity.Name;
 

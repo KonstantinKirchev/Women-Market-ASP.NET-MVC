@@ -1,11 +1,9 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.App.Areas.Admin.Controllers
+﻿namespace WomenMarket.App.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
     using Data.UnitOfWork;
     using System.Net;
-    using Services;
+    using Services.Interfaces;
     using WomenMarket.Models.BindingModels;
     using WomenMarket.Models.ViewModels;
 
@@ -31,7 +29,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(FarmBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 service.CreateNewFarm(model);
 
@@ -60,7 +58,7 @@ namespace WomenMarket.App.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FarmBindingModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
                 service.EditFarm(model);
 

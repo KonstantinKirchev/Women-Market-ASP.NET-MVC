@@ -29,6 +29,7 @@ namespace WomenMarket.Models.BindingModels
         public string Address { get; set; }
 
         [Required]
+        [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
     }
 }

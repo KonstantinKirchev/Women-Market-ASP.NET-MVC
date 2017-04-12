@@ -7,6 +7,7 @@
     using Services.Interfaces;
     using WomenMarket.Models.ViewModels;
 
+    [Authorize(Roles = "User")]
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : BaseController
     {
