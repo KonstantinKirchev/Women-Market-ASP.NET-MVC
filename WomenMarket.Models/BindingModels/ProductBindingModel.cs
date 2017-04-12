@@ -6,15 +6,18 @@ namespace WomenMarket.Models.BindingModels
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(100, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(500, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(10, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Quantity { get; set; }
 
         [Required]

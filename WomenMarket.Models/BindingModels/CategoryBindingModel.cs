@@ -5,7 +5,8 @@
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(100, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Name { get; set; }
     }
 }

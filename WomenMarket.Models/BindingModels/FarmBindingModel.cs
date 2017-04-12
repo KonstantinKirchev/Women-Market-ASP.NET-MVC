@@ -6,10 +6,12 @@ namespace WomenMarket.Models.BindingModels
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(100, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(500, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Description { get; set; }
 
         [Required]
@@ -20,7 +22,8 @@ namespace WomenMarket.Models.BindingModels
         [Phone]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(80, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Address { get; set; }
 
         [Required]

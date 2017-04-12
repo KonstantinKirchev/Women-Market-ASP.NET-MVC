@@ -96,6 +96,7 @@
     <Compile Include="EntityModels\Product.cs" />
     <Compile Include="EntityModels\ShoppingCart.cs" />
     <Compile Include="EntityModels\User.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FarmViewModel.cs" />
