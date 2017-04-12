@@ -18,6 +18,7 @@ namespace WomenMarket.Models.ViewModels
 
         public int Units { get; set; }
 
+        [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
 
         [Display(Name = "Category")]

@@ -18,8 +18,10 @@ namespace WomenMarket.Models.BindingModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        [Phone]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [Display(Name = "Phone number")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = GlobalConstants.PhoneNumberValidationMessage)]
         public string PhoneNumber { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]

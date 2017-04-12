@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WomenMarket.Models.ViewModels
 {
     public class FarmViewModel
     {
@@ -10,10 +12,12 @@
 
         public string Email { get; set; }
 
+        [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
 
         public string Address { get; set; }
 
+        [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
     }
 }
