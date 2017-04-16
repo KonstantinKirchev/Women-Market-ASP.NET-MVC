@@ -10,6 +10,18 @@
                 <li>
                     @Html.Raw(@Html.ActionLink("Cart", "Index", "ShoppingCart", null, new { @class = "fa fa-shopping-cart" }).ToHtmlString().Replace("Cart", ""))
                 </li>
+                <li>
+                    <a href="javascript:;" class="icon-btn notification-btn notification-active">
+                        <span class="cell">
+                            <span class="icon-wrap" id="notify">
+                                <i class="fa fa-bell"></i>
+                                <span class="notification-count">
+                                    <span class="table-holder"><span class="circle-cell">0</span></span>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
             }
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Profile")

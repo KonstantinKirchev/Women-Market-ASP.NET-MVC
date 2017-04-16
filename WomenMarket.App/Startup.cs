@@ -8,6 +8,7 @@ namespace WomenMarket.App
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
             ConfigureAuth(app);
         }
     }

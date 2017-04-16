@@ -47,9 +47,11 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
+    
+<div class="container-fluid">
+    <div id="notifications"></div>
+    @RenderBody()
+</div>
     <footer class="footer-distributed">
         <div class="footer-left">
             <h3>Women's<span> Market</span></h3>
@@ -101,6 +103,8 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/signalr")
+    <script src="signalr/hubs"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

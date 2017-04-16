@@ -50,7 +50,7 @@
         }
 
         [HttpGet]
-        [Route("removeproduct/{id}")]
+        [Route("cart/{cartId}/removeproduct/{id}")]
         public ActionResult RemoveProduct(int cartId, int id)
         {
             Product product = service.GetProduct(id);
@@ -67,7 +67,7 @@
         }
 
         [HttpGet]
-        [Route("decreaseproductunits/{id}")]
+        [Route("cart/{cartId}/decreaseproductunits/{id}")]
         public ActionResult DecreaseProductUnits(int cartId, int id)
         {
             Product product = service.GetProduct(id);
@@ -84,7 +84,7 @@
         }
 
         [HttpGet]
-        [Route("increaseproductunits/{id}")]
+        [Route("cart/{cartId}/increaseproductunits/{id}")]
         public ActionResult IncreaseProductUnits(int cartId, int id)
         {
             Product product = service.GetProduct(id);
