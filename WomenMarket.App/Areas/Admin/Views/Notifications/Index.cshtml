@@ -10,7 +10,8 @@
 {
     HttpMethod = "POST",
     LoadingElementId = "messageSend",
-    LoadingElementDuration = 1000
+    LoadingElementDuration = 1000,
+    OnComplete = "clearMessage"
 }))
 {
     <label for="type">Type:</label>
@@ -28,14 +29,9 @@
 
 @section Scripts{
     <script>
-
-        $(document).ready(function () {
-            //$("#submit")
-            //    .click(function () {
-            //        $("#notification").val("");
-            //    });
-        })
-
+        function clearMessage() {
+            $("#notification").val("");
+        }
     </script>
 }
 
