@@ -12,11 +12,13 @@
     public class ShoppingCartController : BaseController
     {
         private IShoppingCartService service;
+        private IProfileService userService;
 
-        public ShoppingCartController(IWomenMarketData data, IShoppingCartService service) 
+        public ShoppingCartController(IWomenMarketData data, IShoppingCartService service, IProfileService userService) 
             : base(data)
         {
             this.service = service;
+            this.userService = userService;
         }
 
         public ShoppingCartController(IWomenMarketData data, User user) 
@@ -108,7 +110,10 @@
 
             if (!service.IsProfileComplete(username))
             {
-                return this.RedirectToAction("Edit","Profile");
+                UserViewModel viewModel = userService.GetProfile(username);
+                return this.PartialView("_EditProfilePartial", viewModel);
+                //return this.RedirectToAction("Edit","Profile");
+
             }
 
             service.MakeAnOrder(id, totalAmount);

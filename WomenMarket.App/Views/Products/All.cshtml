@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <div hidden="hidden" id="productToCart" style="color: white; background-color: green; margin-top: 10px; font-size: 2em;">The product was successfully added to your shopping cart</div>
+        <div hidden="hidden" id="productToCart" class="alert alert-dismissible alert-success">The product was successfully added to your shopping cart</div>
         <h1 class="page-header">@ViewBag.Title</h1>
         <div class="form-group">
             @using (Html.BeginForm("Search", "Products", FormMethod.Get, new { role = "search" }))

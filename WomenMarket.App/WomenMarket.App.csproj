@@ -398,6 +398,7 @@
     <Content Include="Views\Shared\DisplayTemplates\ProductViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MyOrderViewModel.cshtml" />
     <Content Include="Views\Shared\_ProductResult.cshtml" />
+    <Content Include="Views\Shared\_EditProfilePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

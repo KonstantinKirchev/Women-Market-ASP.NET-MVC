@@ -257,23 +257,6 @@ body > div.container.body-content > table > tbody > tr > td {
     border: 1px solid red;
 }
 
-#productToCart,
-#increaseQuantity,
-#ordered {
-    color: white; 
-    background-color: green; 
-    margin-top: 10px; 
-    font-size: 2em;
-}
-
-#removeProduct,
-#decreaseQuantity{
-    color: red; 
-    background-color: green; 
-    margin-top: 10px; 
-    font-size: 2em;
-}
-
 .alert {
     margin-bottom: 0px;
 }
