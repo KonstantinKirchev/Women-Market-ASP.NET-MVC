@@ -14,6 +14,8 @@ namespace WomenMarket.Models.BindingModels
         [StringLength(500, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Description { get; set; }
 
+        [RegularExpression(@"^\d+\.\d{0,2}$", ErrorMessage = "Invalid Target Price; Maximum Two Decimal Points.")]
+        [Range(0, 9999.99, ErrorMessage = "Price should be between {1} and {2}.")]
         public decimal Price { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]

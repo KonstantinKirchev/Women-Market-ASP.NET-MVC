@@ -13,24 +13,30 @@ namespace WomenMarket.Models.EntityModels
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(100, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(500, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Description { get; set; }
 
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [Display(Name = "Phone number")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = GlobalConstants.PhoneNumberValidationMessage)]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
+        [StringLength(80, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Address { get; set; }
 
         [Required]
+        [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
