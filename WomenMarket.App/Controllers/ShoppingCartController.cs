@@ -29,9 +29,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            string username = this.User.Identity.Name;
-
-            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return View(carts);
         }
@@ -42,9 +40,7 @@
         {
             Product product = service.GetProduct(id);
 
-            string username = this.User.Identity.Name;
-
-            ShoppingCart cart = service.GetShoppingCart(username);
+            ShoppingCart cart = service.GetShoppingCart(this.UserProfile);
 
             service.AddToShoppingCart(cart, product);
 
@@ -61,9 +57,7 @@
 
             service.RemoveFromShoppingCart(cart, product);
 
-            string username = this.User.Identity.Name;
-
-            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return this.PartialView("_ShoppingCartPartial", carts);
         }
@@ -78,9 +72,7 @@
 
             service.DecreaseProductUnitsFromShoppingCart(cart, product);
 
-            string username = this.User.Identity.Name;
-
-            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return this.PartialView("_ShoppingCartPartial", carts);
         }
@@ -95,9 +87,7 @@
 
             service.IncreaseProductUnitsFromShoppingCart(cart, product);
 
-            string username = this.User.Identity.Name;
-
-            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return this.PartialView("_ShoppingCartPartial", carts);
         }
@@ -106,11 +96,9 @@
         [Route("placeorder/{id}")]
         public ActionResult PlaceOrder(int id, decimal totalAmount)
         {
-            string username = this.User.Identity.Name;
-
-            if (!service.IsProfileComplete(username))
+            if (!service.IsProfileComplete(this.UserProfile))
             {
-                UserViewModel viewModel = userService.GetProfile(username);
+                UserViewModel viewModel = userService.GetProfile(this.UserProfile);
                 return this.PartialView("_EditProfilePartial", viewModel);
                 //return this.RedirectToAction("Edit","Profile");
 
@@ -118,7 +106,7 @@
 
             service.MakeAnOrder(id, totalAmount);
 
-            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(username);
+            IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return this.PartialView("_ShoppingCartPartial", carts);
         }

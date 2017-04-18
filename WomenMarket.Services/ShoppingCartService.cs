@@ -29,10 +29,8 @@ namespace WomenMarket.Services
             return product;
         }
 
-        public ShoppingCart GetShoppingCart(string username)
+        public ShoppingCart GetShoppingCart(User user)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             ShoppingCart shoppingcart =
                 this.Data.ShoppingCarts.All()
                     .FirstOrDefault(s => s.UserId == user.Id && s.Status == OrderStatus.Open);
@@ -70,10 +68,8 @@ namespace WomenMarket.Services
         //    return viewModel;
         //}
 
-        public IEnumerable<ShoppingCartProductViewModel> MyShoppingCart(string username)
+        public IEnumerable<ShoppingCartProductViewModel> MyShoppingCart(User user)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             IEnumerable<ShoppingCartProduct> shoppingcarts =
                 this.Data.ShoppingCartProducts.All()
                     .Where(s => s.ShoppingCart.UserId == user.Id && s.ShoppingCart.Status == OrderStatus.Open).ToList();
@@ -180,10 +176,8 @@ namespace WomenMarket.Services
             this.Data.SaveChanges();
         }
 
-        public bool IsProfileComplete(string username)
+        public bool IsProfileComplete(User user)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             if (user.Name == null || user.Address == null || user.PhoneNumber == null)
             {
                 return false;

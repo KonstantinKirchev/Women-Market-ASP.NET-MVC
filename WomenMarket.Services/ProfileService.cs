@@ -1,6 +1,4 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.Services
+﻿namespace WomenMarket.Services
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +9,7 @@ namespace WomenMarket.Services
     using Models.EntityModels;
     using Models.Enums;
     using Models.ViewModels;
+    using Interfaces;
 
     public class ProfileService : Service, IProfileService
     {
@@ -24,19 +23,15 @@ namespace WomenMarket.Services
         {
         }
 
-        public UserViewModel GetProfile(string username)
+        public UserViewModel GetProfile(User currentUser)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
-            UserViewModel viewModel = Mapper.Instance.Map<User, UserViewModel>(user);
+            UserViewModel viewModel = Mapper.Instance.Map<User, UserViewModel>(currentUser);
 
             return viewModel;
         }
 
-        public IEnumerable<MyOrderViewModel> GetMyOrders(string username)
+        public IEnumerable<MyOrderViewModel> GetMyOrders(User user)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             IEnumerable<ShoppingCart> shoppingcarts =
                 this.Data.ShoppingCarts.All()
                     .Where(s => s.UserId == user.Id).ToList();
@@ -46,10 +41,8 @@ namespace WomenMarket.Services
             return viewModels;
         }
 
-        public IEnumerable<MyOrderViewModel> GetOrdersByStatus(string username, string status)
+        public IEnumerable<MyOrderViewModel> GetOrdersByStatus(User user, string status)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             IEnumerable<ShoppingCart> orders;
 
             if (status == "All")
@@ -68,10 +61,8 @@ namespace WomenMarket.Services
             return viewModels;
         }
 
-        public void EditUser(string username, UserBindingModel model)
+        public void EditUser(User user, UserBindingModel model)
         {
-            User user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);
-
             user.Name = model.Name;
             user.Email = model.Email;
             user.ImageUrl = model.ImageUrl;

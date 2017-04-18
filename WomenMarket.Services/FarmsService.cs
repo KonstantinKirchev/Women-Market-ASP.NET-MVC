@@ -1,6 +1,4 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.Services
+﻿namespace WomenMarket.Services
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,6 +7,7 @@ namespace WomenMarket.Services
     using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels;
+    using Interfaces;
 
     public class FarmsService : Service, IFarmsService
     {

@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
-using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.Services.Interfaces
+﻿namespace WomenMarket.Services.Interfaces
 {
+    using System.Collections.Generic;
+    using Models.BindingModels;
+    using Models.EntityModels;
+    using Models.ViewModels;
+
     public interface IProfileService
     {
-        UserViewModel GetProfile(string username);
-        IEnumerable<MyOrderViewModel> GetMyOrders(string username);
-        IEnumerable<MyOrderViewModel> GetOrdersByStatus(string username, string status);
-        void EditUser(string username, UserBindingModel model);
+        UserViewModel GetProfile(User user);
+        IEnumerable<MyOrderViewModel> GetMyOrders(User user);
+        IEnumerable<MyOrderViewModel> GetOrdersByStatus(User user, string status);
+        void EditUser(User user, UserBindingModel model);
     }
 }

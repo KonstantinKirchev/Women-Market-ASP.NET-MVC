@@ -27,9 +27,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var username = User.Identity.Name;
-
-            UserViewModel viewModel = service.GetProfile(username);
+            UserViewModel viewModel = service.GetProfile(this.UserProfile);
 
             return View(viewModel);
         }
@@ -37,9 +35,7 @@
         [HttpGet]
         public ActionResult Edit()
         {
-            var username = User.Identity.Name;
-
-            UserViewModel viewModel = service.GetProfile(username);
+            UserViewModel viewModel = service.GetProfile(this.UserProfile);
 
             return View(viewModel);
         }
@@ -50,9 +46,7 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var username = User.Identity.Name;
-
-                service.EditUser(username, model);
+                service.EditUser(this.UserProfile, model);
 
                 return RedirectToAction("Index", "Profile", routeValues: new { area = "" });
 
@@ -64,9 +58,7 @@
         [HttpGet]
         public ActionResult MyOrders(int? page)
         {
-            var username = User.Identity.Name;
-
-            IEnumerable<MyOrderViewModel> viewModels = service.GetMyOrders(username);
+            IEnumerable<MyOrderViewModel> viewModels = service.GetMyOrders(this.UserProfile);
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
@@ -76,10 +68,8 @@
 
         [HttpGet]
         public PartialViewResult _OrdersByStatusPartial(string status, int? page)
-        {
-            var username = User.Identity.Name;
-            
-            IEnumerable<MyOrderViewModel> viewModels = service.GetOrdersByStatus(username, status);
+        {            
+            IEnumerable<MyOrderViewModel> viewModels = service.GetOrdersByStatus(this.UserProfile, status);
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);

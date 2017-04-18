@@ -1,6 +1,4 @@
-﻿using WomenMarket.Services.Interfaces;
-
-namespace WomenMarket.Services
+﻿namespace WomenMarket.Services
 {
     using Data.UnitOfWork;
     using Models.EntityModels;
@@ -9,6 +7,7 @@ namespace WomenMarket.Services
     using AutoMapper;
     using Models.BindingModels;
     using Models.ViewModels;
+    using Interfaces;
 
     public class CategoriesService : Service, ICategoriesService
     {
