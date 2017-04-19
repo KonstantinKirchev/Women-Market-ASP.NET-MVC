@@ -8,6 +8,7 @@ using Ninject;
 using Ninject.Web.Common;
 using WomenMarket.App;
 using WomenMarket.Data;
+using WomenMarket.Data.Interfaces;
 using WomenMarket.Data.UnitOfWork;
 using WomenMarket.Models.EntityModels;
 using WomenMarket.Services;

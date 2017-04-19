@@ -1,9 +1,7 @@
-﻿using WomenMarket.Models.EntityModels;
-
-namespace WomenMarket.Data.UnitOfWork
+﻿namespace WomenMarket.Data.UnitOfWork
 {
     using Repositories;
-    using Models;
+    using Models.EntityModels;
 
     public interface IWomenMarketData
     {
