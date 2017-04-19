@@ -22,7 +22,7 @@ namespace WomenMarket.Models.BindingModels
         [StringLength(10, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Quantity { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
 

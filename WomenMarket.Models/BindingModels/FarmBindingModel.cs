@@ -14,7 +14,7 @@ namespace WomenMarket.Models.BindingModels
         [StringLength(500, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Description { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -28,7 +28,7 @@ namespace WomenMarket.Models.BindingModels
         [StringLength(80, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Address { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
     }
