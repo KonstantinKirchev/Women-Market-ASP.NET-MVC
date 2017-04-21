@@ -58,7 +58,7 @@
 
             if (viewModel == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
             return View(viewModel);
@@ -91,7 +91,7 @@
 
             if (viewModel == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
             return View(viewModel);
