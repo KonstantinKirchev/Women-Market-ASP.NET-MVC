@@ -1,8 +1,8 @@
 ﻿namespace WomenMarket.Data.Mocks
 {
+    using Models.EntityModels;
     using System.Data.Entity;
     using Interfaces;
-    using Models.EntityModels;
 
     public class FakeWomenMarketContext : IWomenMarketContext
     {

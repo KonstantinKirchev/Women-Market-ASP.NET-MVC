@@ -105,6 +105,9 @@
 
                     return category ?? null;
                 });
+            this.CategoryRepositoryMock.Setup(r => r.Add(It.IsAny<Category>())).Callback<Category>((category) => fakeCategories.Add(category));
+            this.CategoryRepositoryMock.Setup(r => r.Remove(It.IsAny<Category>())).Callback<Category>((category) => fakeCategories.Remove(category));
+
         }
 
         private void SetupFakeProducts()

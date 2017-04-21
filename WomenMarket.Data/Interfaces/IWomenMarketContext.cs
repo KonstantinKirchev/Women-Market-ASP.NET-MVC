@@ -5,7 +5,6 @@
 
     public interface IWomenMarketContext
     {
-
         DbSet<Product> Products { get; set; }
 
         DbSet<Category> Categories { get; set; }

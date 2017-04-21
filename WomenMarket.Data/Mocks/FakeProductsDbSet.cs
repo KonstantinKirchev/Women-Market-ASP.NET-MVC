@@ -7,7 +7,7 @@
     {
         public override Product Find(params object[] keyValues)
         {
-            int wantedId = (int) keyValues[0];
+            var wantedId = (int)keyValues[0];
             return this.Set.FirstOrDefault(p => p.Id == wantedId);
         }
     }

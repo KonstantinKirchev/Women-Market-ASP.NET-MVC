@@ -1,14 +1,14 @@
-﻿namespace WomenMarket.Test
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Models.EntityModels;
-    using Moq;
-    using App.Controllers;
-    using Data.UnitOfWork;
-    using Services.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WomenMarket.App.Controllers;
+using WomenMarket.Data.UnitOfWork;
+using WomenMarket.Models.EntityModels;
+using WomenMarket.Services.Interfaces;
 
+namespace WomenMarket.Test.Controllers
+{
     [TestClass]
     public class FarmsControllerTest
     {

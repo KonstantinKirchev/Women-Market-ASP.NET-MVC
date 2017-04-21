@@ -4,8 +4,7 @@
     using System.Data.Entity;
     using System.Linq;
 
-    public class FakeDbSet<T> : DbSet<T>, IEnumerable<T>, IQueryable
-        where T : class
+    public class FakeDbSet<T> : DbSet<T>, IQueryable, IEnumerable<T> where T : class
     {
         protected HashSet<T> Set;
         protected IQueryable Query;
