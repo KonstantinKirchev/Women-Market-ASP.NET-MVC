@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.Test.Controllers
+﻿using System.Web.Configuration;
+
+namespace WomenMarket.Test.Controllers
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using App.Areas.Admin.Controllers;

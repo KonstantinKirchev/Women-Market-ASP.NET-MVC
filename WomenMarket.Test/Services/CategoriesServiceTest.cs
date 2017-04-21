@@ -41,33 +41,44 @@
         }
 
         [TestMethod]
-        public void ListAllCategories_ShouldReturnGivenCategories()
+        public void GetAllCategories_ShouldReturnGivenCategories()
         {
-            var data = this._service.GetAllCategories();
-            Assert.AreEqual(3, data.Count());
+            var categories = this._service.GetAllCategories();
+            Assert.IsNotNull(categories);
+            Assert.AreEqual(3, categories.Count());
+            Assert.AreEqual("Fruits", categories.FirstOrDefault().Name);
         }
 
         [TestMethod]
-        public void GetEditCategory_ShouldReturnGivenCategory()
+        public void GetEditCategoryWithValidId_ShouldReturnGivenCategory()
         {
-            var data = this._service.GetEditCategory(1);
-            Assert.AreEqual(1, data.Id);
-            Assert.AreEqual("Fruits", data.Name);
+            var category = this._service.GetEditCategory(1);
+            Assert.IsNotNull(category);
+            Assert.AreEqual(1, category.Id);
+            Assert.AreEqual("Fruits", category.Name);
         }
 
         [TestMethod]
-        public void GetDeleteCategory_ShouldReturnGivenCategory()
+        public void GetEditCategoryWithInvalidId_ShouldReturnNull()
         {
-            var data = this._service.GetDeleteCategory(2);
-            Assert.AreEqual(2, data.Id);
-            Assert.AreEqual("Vegetables", data.Name);
+            var category = this._service.GetEditCategory(4);
+            Assert.IsNull(category);
         }
 
         [TestMethod]
-        public void GetInValidCategoryById_ShouldNotFoundCategory()
+        public void GetDeleteCategoryWithValidId_ShouldReturnGivenCategory()
         {
-            var data = this._service.GetEditCategory(4);
-            Assert.IsNull(data);
+            var category = this._service.GetDeleteCategory(2);
+            Assert.IsNotNull(category);
+            Assert.AreEqual(2, category.Id);
+            Assert.AreEqual("Vegetables", category.Name);
+        }
+
+        [TestMethod]
+        public void GetDeleteCategoryWithInvalidId_ShouldReturnNull()
+        {
+            var category = this._service.GetDeleteCategory(4);
+            Assert.IsNull(category);
         }
 
         [TestMethod]
@@ -78,14 +89,6 @@
             Assert.AreEqual(4, this.dbMock.Object.Categories.All().Count());
         }
 
-        //[TestMethod]
-        //public void PostInValidCategory_ShouldNotAddToRepo()
-        //{
-        //    CategoryBindingModel testCategory = new CategoryBindingModel() { Id = 5, Name = ""};
-        //    this._service.CreateNewCategory(testCategory);
-        //    Assert.AreEqual(3, this.dbMock.Object.Categories.All().Count());
-        //}
-
         [TestMethod]
         public void PutValidCategory_ShouldModifyExistingCategory()
         {
@@ -93,14 +96,6 @@
             this._service.EditCategory(testCategory);
             Assert.AreEqual("Fish", this.dbMock.Object.Categories.Find(1).Name);
         }
-
-        //[TestMethod]
-        //public void PutValidCarOnInvalidId_ShouldReturnNotFound()
-        //{
-        //    CategoryBindingModel testCategory = new CategoryBindingModel() { Id = 4, Name = "Fish" };
-        //    this._service.EditCategory(testCategory);
-        //    Assert.AreEqual("Fruits", this.dbMock.Object.Categories.Find(1).Name);
-        //}
 
         [TestMethod]
         public void DeleteExistingCategory_ShouldDeleteCategoryFromRepo()
