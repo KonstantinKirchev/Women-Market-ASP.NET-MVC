@@ -28,7 +28,7 @@ namespace WomenMarket.Models.EntityModels
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Display(Name = "Phone number")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = GlobalConstants.PhoneNumberValidationMessage)]
+        [RegularExpression(@"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b", ErrorMessage = GlobalConstants.PhoneNumberValidationMessage)]
         public string PhoneNumber { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
