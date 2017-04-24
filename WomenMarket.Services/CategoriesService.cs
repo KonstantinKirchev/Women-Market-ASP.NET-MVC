@@ -90,6 +90,7 @@
         public void DeleteCategory(int id)
         {
             Category category = this.Data.Categories.Find(id);
+            if (category == null) return;
             category.IsDeleted = true;
             this.Data.SaveChanges();
         }

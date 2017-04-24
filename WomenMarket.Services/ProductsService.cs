@@ -162,6 +162,7 @@ namespace WomenMarket.Services
         public void DeleteProduct(int id)
         {
             Product product = this.Data.Products.Find(id);
+            if (product == null) return;
             product.IsDeleted = true;
             this.Data.SaveChanges();
         }

@@ -104,6 +104,7 @@
         public void DeleteFarm(int id)
         {
             Farm farm = this.Data.Farms.Find(id);
+            if (farm == null) return;
             farm.IsDeleted = true;
             this.Data.SaveChanges();
         }

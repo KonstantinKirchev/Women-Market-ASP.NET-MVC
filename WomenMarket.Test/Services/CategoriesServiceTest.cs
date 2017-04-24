@@ -101,7 +101,10 @@
         public void DeleteExistingCategory_ShouldDeleteCategoryFromRepo()
         {
             this._service.DeleteCategory(2);
-            Assert.AreEqual(2, this.dbMock.Object.Categories.All().Count());
+            var category = this.dbMock.Object.Categories.Find(2);
+
+            Assert.IsTrue(category.IsDeleted);
+            Assert.AreEqual(3, this.dbMock.Object.Categories.All().Count());
         }
 
         [TestMethod]
