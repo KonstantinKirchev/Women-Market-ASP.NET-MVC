@@ -149,6 +149,7 @@ namespace WomenMarket.Services
             var categories = this.Data
                         .Categories
                         .All()
+                        .Where(c => c.IsDeleted == false)
                         .Select(x =>
                                 new SelectListItem
                                 {

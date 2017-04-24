@@ -23,7 +23,7 @@
 
         public IEnumerable<CategoryViewModel> GetAllCategories()
         {
-            IEnumerable<Category> categories = this.Data.Categories.All().OrderBy(c => c.Id);
+            IEnumerable<Category> categories = this.Data.Categories.All().Where(c => c.IsDeleted == false).OrderBy(c => c.Id);
             IEnumerable<CategoryViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
 
             return viewModels;
@@ -31,13 +31,23 @@
 
         public void CreateNewCategory(CategoryBindingModel model)
         {
-            var category = new Category()
-            {
-                Name = model.Name
-            };
+            Category existingCategory = this.Data.Categories.All().FirstOrDefault(c => c.Name == model.Name);
 
-            this.Data.Categories.Add(category);
-            this.Data.SaveChanges();
+            if (existingCategory == null)
+            {
+                var category = new Category()
+                {
+                    Name = model.Name
+                };
+
+                this.Data.Categories.Add(category);
+                this.Data.SaveChanges();
+            }
+            else
+            {
+                existingCategory.IsDeleted = false;
+                this.Data.SaveChanges();
+            }
         }
 
         public CategoryViewModel GetEditCategory(int? id)
@@ -80,7 +90,8 @@
         public void DeleteCategory(int id)
         {
             Category category = this.Data.Categories.Find(id);
-            this.Data.Categories.Remove(category);
+            category.IsDeleted = true;
+            //this.Data.Categories.Remove(category);
 
             this.Data.SaveChanges();
         }

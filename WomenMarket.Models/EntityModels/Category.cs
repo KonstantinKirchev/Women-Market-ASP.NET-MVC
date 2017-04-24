@@ -8,6 +8,7 @@ namespace WomenMarket.Models.EntityModels
         public Category()
         {
             this.Products = new HashSet<Product>();
+            this.IsDeleted = false;
         }
 
         [Key]
@@ -16,6 +17,8 @@ namespace WomenMarket.Models.EntityModels
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [StringLength(100, ErrorMessage = GlobalConstants.StringLengthValidationMessage)]
         public string Name { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }
