@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using WomenMarket.Models.BindingModels;
-using WomenMarket.Models.ViewModels;
-
-namespace WomenMarket.Services.Interfaces
+﻿namespace WomenMarket.Services.Interfaces
 {
+    using System.Collections.Generic;
+    using Models.BindingModels;
+    using Models.ViewModels;
+
     public interface IProductsService
     {
         IEnumerable<ProductViewModel> GetAllProducts();

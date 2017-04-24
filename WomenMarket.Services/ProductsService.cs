@@ -27,6 +27,7 @@ namespace WomenMarket.Services
         {
             IEnumerable<Product> products = this.Data.Products.All().Where(p => p.IsDeleted == false && p.Category.IsDeleted == false && p.Owner.IsDeleted == false).OrderBy(p => p.Id);
             IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
+
             return viewModels;
         }
 

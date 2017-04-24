@@ -27,6 +27,15 @@
         }
 
         [HttpGet]
+        [AllowAnonymous]
+        public JsonResult GetCategories()
+        {
+            IEnumerable<CategoryViewModel> categories = service.GetAllCategories();
+
+            return Json(categories, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
