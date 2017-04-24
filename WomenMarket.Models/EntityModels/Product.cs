@@ -9,6 +9,7 @@
         public Product()
         {
             this.ShoppingCartProducts = new HashSet<ShoppingCartProduct>();
+            this.IsDeleted = false;
         }
 
         [Key]
@@ -33,6 +34,8 @@
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public int OwnerId { get; set; }
 

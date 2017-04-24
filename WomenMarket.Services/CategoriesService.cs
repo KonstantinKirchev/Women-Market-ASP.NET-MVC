@@ -41,13 +41,13 @@
                 };
 
                 this.Data.Categories.Add(category);
-                this.Data.SaveChanges();
             }
             else
             {
                 existingCategory.IsDeleted = false;
-                this.Data.SaveChanges();
             }
+
+            this.Data.SaveChanges();
         }
 
         public CategoryViewModel GetEditCategory(int? id)

@@ -25,28 +25,28 @@ namespace WomenMarket.Services
 
         public IEnumerable<ProductViewModel> GetAllProducts()
         {
-            IEnumerable<Product> products = this.Data.Products.All().OrderBy(p => p.Id);
+            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.IsDeleted == false && p.Category.IsDeleted == false).OrderBy(p => p.Id);
             IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
             return viewModels;
         }
 
         public IEnumerable<ProductViewModel> GetFilteredProducts(string category)
         {
-            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Category.Name == category).OrderBy(p => p.Id);
+            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Category.Name == category && p.IsDeleted == false && p.Category.IsDeleted == false).OrderBy(p => p.Id);
             IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
             return viewModels;
         }
 
         public IEnumerable<ProductViewModel> GetSearchedProducts(string product)
         {
-            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Name.Contains(product)).OrderBy(p => p.Id);
+            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Name.Contains(product) && p.IsDeleted == false && p.Category.IsDeleted == false).OrderBy(p => p.Id);
             IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
             return viewModels;
         }
 
         public IEnumerable<ProductViewModel> GetProductsByFarm(string farm)
         {
-            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Owner.Name == farm).OrderBy(p => p.Id);
+            IEnumerable<Product> products = this.Data.Products.All().Where(p => p.Owner.Name == farm && p.IsDeleted == false && p.Category.IsDeleted == false).OrderBy(p => p.Id);
             IEnumerable<ProductViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(products);
             return viewModels;
         }
@@ -64,18 +64,34 @@ namespace WomenMarket.Services
 
         public void CreateNewProduct(ProductBindingModel model)
         {
-            Product product = new Product()
-            {
-                Name = model.Name,
-                Description = model.Description,
-                Price = model.Price,
-                Quantity = model.Quantity,
-                ImageUrl = model.ImageUrl,
-                CategoryId = model.CategoryId,
-                OwnerId = model.FarmId
-            };
+            Product existingProduct = this.Data.Products.All().FirstOrDefault(p => p.Name == model.Name);
 
-            this.Data.Products.Add(product);
+            if (existingProduct == null)
+            {
+                Product product = new Product()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Quantity = model.Quantity,
+                    ImageUrl = model.ImageUrl,
+                    CategoryId = model.CategoryId,
+                    OwnerId = model.FarmId
+                };
+
+                this.Data.Products.Add(product);
+            }
+            else
+            {
+                existingProduct.IsDeleted = false;
+                existingProduct.Description = model.Description;
+                existingProduct.Price = model.Price;
+                existingProduct.Quantity = model.Quantity;
+                existingProduct.ImageUrl = model.ImageUrl;
+                existingProduct.CategoryId = model.CategoryId;
+                existingProduct.OwnerId = model.FarmId;
+            }
+
             this.Data.SaveChanges();
         }
 
@@ -140,7 +156,8 @@ namespace WomenMarket.Services
         public void DeleteProduct(int id)
         {
             Product product = this.Data.Products.Find(id);
-            this.Data.Products.Remove(product);
+            product.IsDeleted = true;
+            //this.Data.Products.Remove(product);
             this.Data.SaveChanges();
         }
 

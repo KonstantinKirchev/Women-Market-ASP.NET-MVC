@@ -26,6 +26,8 @@ namespace WomenMarket.Models.BindingModels
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public int CategoryId { get; set; }
 
         public int FarmId { get; set; }
