@@ -54,7 +54,7 @@
         {
             Category category = this.Data.Categories.Find(id);
 
-            if (category == null)
+            if (category == null || category.IsDeleted == true)
             {
                 return null;
             }
@@ -77,7 +77,7 @@
         {
             Category categeory = this.Data.Categories.Find(id);
 
-            if (categeory == null)
+            if (categeory == null || categeory.IsDeleted == true)
             {
                 return null;
             }
@@ -91,8 +91,6 @@
         {
             Category category = this.Data.Categories.Find(id);
             category.IsDeleted = true;
-            //this.Data.Categories.Remove(category);
-
             this.Data.SaveChanges();
         }
     }

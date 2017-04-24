@@ -31,5 +31,7 @@ namespace WomenMarket.Models.BindingModels
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace WomenMarket.Models.EntityModels
         public Farm()
         {
             this.Products = new HashSet<Product>();
+            this.IsDeleted = false;
         }
 
         [Key]
@@ -38,6 +39,8 @@ namespace WomenMarket.Models.EntityModels
         [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
         [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

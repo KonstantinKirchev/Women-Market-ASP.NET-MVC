@@ -23,24 +23,39 @@
 
         public IEnumerable<FarmViewModel> GetAllFarms()
         {
-            IEnumerable<Farm> farms = this.Data.Farms.All().OrderBy(f => f.Id);
+            IEnumerable<Farm> farms = this.Data.Farms.All().Where(f => f.IsDeleted == false).OrderBy(f => f.Id);
             IEnumerable<FarmViewModel> viewModels = Mapper.Instance.Map<IEnumerable<Farm>, IEnumerable<FarmViewModel>>(farms);
             return viewModels;
         }
 
         public void CreateNewFarm(FarmBindingModel model)
         {
-            var farm = new Farm()
-            {
-                Name = model.Name,
-                Description = model.Description,
-                Address = model.Address,
-                Email = model.Email,
-                ImageUrl = model.ImageUrl,
-                PhoneNumber = model.PhoneNumber
-            };
+            Farm existingFarm = this.Data.Farms.All().FirstOrDefault(f => f.Name == model.Name);
 
-            this.Data.Farms.Add(farm);
+            if (existingFarm == null)
+            {
+                var farm = new Farm()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    Address = model.Address,
+                    Email = model.Email,
+                    ImageUrl = model.ImageUrl,
+                    PhoneNumber = model.PhoneNumber
+                };
+
+                this.Data.Farms.Add(farm);
+            }
+            else
+            {
+                existingFarm.IsDeleted = false;
+                existingFarm.Description = model.Description;
+                existingFarm.Address = model.Address;
+                existingFarm.Email = model.Email;
+                existingFarm.ImageUrl = model.ImageUrl;
+                existingFarm.PhoneNumber = model.PhoneNumber;
+            }
+            
             this.Data.SaveChanges();
         }
 
@@ -48,7 +63,7 @@
         {
             Farm farm = this.Data.Farms.Find(id);
 
-            if (farm == null)
+            if (farm == null || farm.IsDeleted == true)
             {
                 return null;
             }
@@ -76,7 +91,7 @@
         {
             Farm farm = this.Data.Farms.Find(id);
 
-            if (farm == null)
+            if (farm == null || farm.IsDeleted == true)
             {
                 return null;
             }
@@ -89,8 +104,7 @@
         public void DeleteFarm(int id)
         {
             Farm farm = this.Data.Farms.Find(id);
-
-            this.Data.Farms.Remove(farm);
+            farm.IsDeleted = true;
             this.Data.SaveChanges();
         }
     }
