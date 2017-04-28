@@ -29,6 +29,11 @@
         [HttpGet]
         public ActionResult Index()
         {
+            if (!service.IsProfileComplete(this.UserProfile))
+            {
+                return this.RedirectToAction("Edit", "Profile");
+            }
+
             IEnumerable<ShoppingCartProductViewModel> carts = service.MyShoppingCart(this.UserProfile);
 
             return View(carts);
@@ -100,8 +105,6 @@
             {
                 UserViewModel viewModel = userService.GetProfile(this.UserProfile);
                 return this.PartialView("_EditProfilePartial", viewModel);
-                //return this.RedirectToAction("Edit","Profile");
-
             }
 
             service.MakeAnOrder(id, totalAmount);

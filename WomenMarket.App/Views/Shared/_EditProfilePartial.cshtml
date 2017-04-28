@@ -6,6 +6,13 @@
 }
 
 <div class="container">
+    
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p>Please fill out all your profile information before placing an order.</p>
+    </div>
+    
+
     @using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
@@ -56,6 +63,3 @@
         </div>
     }
 </div>
-
-
-
