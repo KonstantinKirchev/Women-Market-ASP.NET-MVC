@@ -57,7 +57,6 @@
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            //return this.PartialView("_ProductResult", products.ToPagedList(pageNumber, pageSize));
             return this.View(products.ToPagedList(pageNumber, pageSize));
         }
 
