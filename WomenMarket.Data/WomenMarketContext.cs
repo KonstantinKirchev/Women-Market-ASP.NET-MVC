@@ -1,10 +1,8 @@
-using System.Data.Entity;
-using WomenMarket.Models.EntityModels;
-
 namespace WomenMarket.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
+    using System.Data.Entity;
+    using Models.EntityModels;
 
     public class WomenMarketContext : IdentityDbContext<User>
     {

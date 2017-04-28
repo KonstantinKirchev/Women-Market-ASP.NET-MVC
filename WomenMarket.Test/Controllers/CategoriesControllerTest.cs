@@ -65,6 +65,7 @@ namespace WomenMarket.Test.Controllers
         {
             var result = _controller.Index() as ViewResult;
             Assert.IsNotNull(result);
+
             var categories = result.Model as IEnumerable<CategoryViewModel>;
             Assert.IsNotNull(categories);
             Assert.AreEqual(3, categories.Count());
