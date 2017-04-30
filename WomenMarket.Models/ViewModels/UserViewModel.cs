@@ -25,8 +25,6 @@ namespace WomenMarket.Models.ViewModels
         public string Email { get; set; }
 
         [Display(Name = "Image Url")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = GlobalConstants.RequiredValidationMessage)]
-        [Url(ErrorMessage = GlobalConstants.UrlValidationMessage)]
         public string ImageUrl { get; set; }
     }
 }
