@@ -241,10 +241,6 @@ textarea {
     border-color: #2c3e50;
 }
 
-body > div.container-fluid > div > h1 {
-    text-align: center;
-}
-
 .navbar-form {
     padding-left: 0;
 }
