@@ -7,17 +7,19 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Farm</th>
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in Model)
+            @foreach (var entity in Model)
             {
                 <tr>
-                    <td>@product.Product.Name</td>
-                    <td>@product.Units</td>
-                    <td>@product.Product.Price lv.</td>
+                    <td>@entity.Product.Name</td>
+                    <td>@entity.Product.Owner.Name</td>
+                    <td>@entity.Units @entity.Product.Quantity.Split()[1]</td>
+                    <td>@entity.Product.Price lv.</td>
                 </tr>
             }
         </tbody>

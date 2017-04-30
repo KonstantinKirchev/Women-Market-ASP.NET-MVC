@@ -264,3 +264,11 @@ body > div.container.body-content > table > tbody > tr > td {
 .input-group {
     display: block;
 }
+
+#RememberMe {
+    margin-left: 0;
+}
+
+#Facebook {
+    background-color: #3b5998;
+}
