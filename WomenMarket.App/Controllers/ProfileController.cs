@@ -29,6 +29,8 @@
         {
             UserViewModel viewModel = service.GetProfile(this.UserProfile);
 
+            TempData["controllerName"] = this.ControllerContext.RouteData.Values["controller"].ToString();
+
             return View(viewModel);
         }
 
@@ -48,7 +50,9 @@
             {
                 service.EditUser(this.UserProfile, model);
 
-                return RedirectToAction("Index", "Profile", routeValues: new { area = "" });
+                string controller = TempData["controllerName"].ToString();
+
+                return RedirectToAction("Index", controller, routeValues: new { area = "" });
 
             }
 

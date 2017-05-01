@@ -31,6 +31,7 @@
         {
             if (!service.IsProfileComplete(this.UserProfile))
             {
+                TempData["controllerName"] = this.ControllerContext.RouteData.Values["controller"].ToString();
                 return this.RedirectToAction("Edit", "Profile");
             }
 
