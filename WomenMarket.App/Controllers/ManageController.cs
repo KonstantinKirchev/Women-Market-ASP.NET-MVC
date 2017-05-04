@@ -1,4 +1,6 @@
-﻿namespace WomenMarket.App.Controllers
+﻿using WomenMarket.Models.ViewModels.ManageViewModels;
+
+namespace WomenMarket.App.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;

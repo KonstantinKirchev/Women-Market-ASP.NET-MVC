@@ -46,6 +46,9 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -98,8 +101,25 @@
     <Compile Include="EntityModels\User.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AccountViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\ForgotViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FarmViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\FactorViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\ManageLoginsViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\MyOrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

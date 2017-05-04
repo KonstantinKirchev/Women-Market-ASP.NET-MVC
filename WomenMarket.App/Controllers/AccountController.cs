@@ -8,7 +8,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Models.ViewModels;
-    using Data;
+    using WomenMarket.Models.ViewModels.AccountViewModels;
     using WomenMarket.Models.EntityModels;
 
     [Authorize]
