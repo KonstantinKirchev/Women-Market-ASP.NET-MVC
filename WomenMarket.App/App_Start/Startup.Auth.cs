@@ -5,9 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using WomenMarket.App.Models;
 using WomenMarket.Data;
-using WomenMarket.Models;
 using WomenMarket.Models.EntityModels;
 
 namespace WomenMarket.App
