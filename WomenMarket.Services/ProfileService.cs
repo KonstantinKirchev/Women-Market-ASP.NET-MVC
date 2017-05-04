@@ -34,7 +34,9 @@
         {
             IEnumerable<ShoppingCart> shoppingcarts =
                 this.Data.ShoppingCarts.All()
-                    .Where(s => s.UserId == user.Id).ToList();
+                    .Where(s => s.UserId == user.Id)
+                    .OrderByDescending(s => s.DateOfOrder)
+                    .ToList();
 
             IEnumerable<MyOrderViewModel> viewModels = Mapper.Instance.Map<IEnumerable<ShoppingCart>, IEnumerable<MyOrderViewModel>>(shoppingcarts);
 

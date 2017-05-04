@@ -24,7 +24,7 @@
 
         public IEnumerable<OrderViewModel> GetAllOrders()
         {
-            IEnumerable<ShoppingCart> orders = this.Data.ShoppingCarts.All().ToList();
+            IEnumerable<ShoppingCart> orders = this.Data.ShoppingCarts.All().OrderByDescending(o => o.DateOfOrder).ToList();
             IEnumerable<OrderViewModel> viewModels = Mapper.Instance.Map<IEnumerable<ShoppingCart>, IEnumerable<OrderViewModel>>(orders);
 
             return viewModels;
